@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://mvdtjtwqlhlo"]
+
+[ext_resource type="Texture2D" uid="uid://chnecvh6v5ddy" path="res://Assets/Environment/Sand Terrain.png" id="1_gw86p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qrinl"]
+texture = ExtResource("1_gw86p")
+separation = Vector2i(2, 0)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Floor"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_qrinl")
