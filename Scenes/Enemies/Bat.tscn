@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://o53byxsxakiu"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Bat.gd" id="1_vb43c"]
+[ext_resource type="Texture2D" uid="uid://dlbwghgn52cgq" path="res://Assets/Enemies/placeholderbat.png" id="2_mev6o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04nk7"]
+size = Vector2(31, 17)
+
+[node name="Bat" type="Area2D" groups=["enemy"]]
+script = ExtResource("1_vb43c")
+
+[node name="Bat" type="Sprite2D" parent="."]
+texture = ExtResource("2_mev6o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_04nk7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
