@@ -6,6 +6,7 @@ extends Area2D
 
 func _process(_delta):
 	# Update the bat debugging health
+	$Bat/BatHealthLabel.text = str(health)
 	#end _process
 
 
