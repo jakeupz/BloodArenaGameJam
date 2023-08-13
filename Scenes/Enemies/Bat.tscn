@@ -12,6 +12,20 @@ script = ExtResource("1_vb43c")
 [node name="Bat" type="Sprite2D" parent="."]
 texture = ExtResource("2_mev6o")
 
+[node name="BatHealthLabel" type="Label" parent="Bat"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.171
+anchor_right = 0.5
+anchor_bottom = 0.171
+offset_left = -25.0
+offset_top = -36.472
+offset_right = -5.0
+offset_bottom = -10.472
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_04nk7")

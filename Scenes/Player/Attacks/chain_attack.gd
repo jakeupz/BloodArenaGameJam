@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var attack_damage : int = 1
 
 # _ready() runs as soon as the object is spawned in
 func _ready():
@@ -16,14 +17,10 @@ func _ready():
 	
 	#end _ready
 
-# _process() runs every frame
-func _process(delta):
-	pass
-	#end _process
 
 
 # When the swinging chain attack hitbox touches another area
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	# In future, we will use this signal to deal damage to enemies.
 	# For now, it just has a debug message.
 	print ("ChainAttack hit something!")
@@ -38,7 +35,7 @@ func _on_area_entered(area):
 
 
 # Once the swing animation is finished, delete this instance of ChainAttack
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	# Set the currently_attacking global var to false before deleting this object
 	Global.currently_attacking = false
 	queue_free()
