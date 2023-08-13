@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjo61cvhkpfkd"
-path="res://.godot/imported/Sand Environment.png-7dbab927aa1b0095b9cba1cbfa687778.ctex"
+path="res://.godot/imported/Sand Environment.png-7ad28ff308566b3a2b03bcca25bf747d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Sand Environment.png"
-dest_files=["res://.godot/imported/Sand Environment.png-7dbab927aa1b0095b9cba1cbfa687778.ctex"]
+source_file="res://Assets/Environment/Sand Environment.png"
+dest_files=["res://.godot/imported/Sand Environment.png-7ad28ff308566b3a2b03bcca25bf747d.ctex"]
 
 [params]
 

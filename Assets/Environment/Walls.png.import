@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bay5tmja3v5ip"
-path="res://.godot/imported/Blood Fountain.png-fdc5e1d5422a24d9ed2bce0c86528b19.ctex"
+uid="uid://v80wqko1atw4"
+path="res://.godot/imported/Walls.png-bdf1fff66b301c19b1c7331bbc031463.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Blood Fountain.png"
-dest_files=["res://.godot/imported/Blood Fountain.png-fdc5e1d5422a24d9ed2bce0c86528b19.ctex"]
+source_file="res://Assets/Environment/Walls.png"
+dest_files=["res://.godot/imported/Walls.png-bdf1fff66b301c19b1c7331bbc031463.ctex"]
 
 [params]
 
