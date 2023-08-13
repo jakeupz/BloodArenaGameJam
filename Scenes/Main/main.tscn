@@ -34,7 +34,6 @@ position = Vector2(284, 160)
 position = Vector2(283, 160)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.05, 0.05, 0.05, 1)
 
 [node name="Bat" parent="." instance=ExtResource("4_jotpb")]
