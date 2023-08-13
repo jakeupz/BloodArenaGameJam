@@ -21,4 +21,5 @@ shape = SubResource("CircleShape2D_xedmc")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(51, 0)
 scale = Vector2(0.5, 0.5)
+shadow_enabled = true
 texture = ExtResource("3_ajb3v")
