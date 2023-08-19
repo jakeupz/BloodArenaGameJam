@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://o53byxsxakiu"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Bat.gd" id="1_vb43c"]
-[ext_resource type="Texture2D" uid="uid://dlbwghgn52cgq" path="res://Assets/Enemies/placeholderbat.png" id="2_mev6o"]
+[ext_resource type="Texture2D" uid="uid://dlbwghgn52cgq" path="res://Assets/Enemies/PlaceholderBat.png" id="2_t6p6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04nk7"]
 size = Vector2(31, 17)
@@ -10,7 +10,7 @@ size = Vector2(31, 17)
 script = ExtResource("1_vb43c")
 
 [node name="Bat" type="Sprite2D" parent="."]
-texture = ExtResource("2_mev6o")
+texture = ExtResource("2_t6p6d")
 
 [node name="BatHealthLabel" type="Label" parent="Bat"]
 anchors_preset = -1
