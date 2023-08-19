@@ -12,17 +12,16 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	
-	# If the area I am intersecting with is a player attack, kill me!
+	# If the area I am intersecting with is a player attack, hurt me!
 	if area.is_in_group("player_attacks"):
 		
-		# If the area that collided is ChainAttack.tscn's ChainAttack(Area2D)
+		# If the area that collided is Player/ChainAttackAnchor/ChainAttack
 		if area.name == "ChainAttack":
 			health -= area.attack_damage
 			#end if
 		
 		# If bat is out of health, kill it / free memory
 		if health <= 0:
-			print ("Bat killed!")
 			# Delete this instance
 			queue_free()
 			#end if

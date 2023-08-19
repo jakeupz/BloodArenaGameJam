@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlbwghgn52cgq"
-path="res://.godot/imported/PlaceholderBat.png-eeb4f5a5cc372532782409a28b8bcdac.ctex"
+uid="uid://bvvihgjcv8oh0"
+path="res://.godot/imported/BigLight.png-f80795e19581d9c5ca3b90f69d9f823e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/PlaceholderBat.png"
-dest_files=["res://.godot/imported/PlaceholderBat.png-eeb4f5a5cc372532782409a28b8bcdac.ctex"]
+source_file="res://Assets/Player/BigLight.png"
+dest_files=["res://.godot/imported/BigLight.png-f80795e19581d9c5ca3b90f69d9f823e.ctex"]
 
 [params]
 
