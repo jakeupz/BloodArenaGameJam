@@ -1,6 +1,8 @@
 extends Sprite2D
 
 
+var sand_steps_player = preload("res://Scenes/Player/SandStepsPlayer.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rotation = get_parent().velocity.angle()
@@ -11,7 +13,7 @@ func _ready():
 func _process(_delta):
 	# Set the rotation of the legs based on which direction of WASD is pressed
 	rotation = get_parent().velocity.angle() - (PI/2)
-
+	
 	# If moving, play the run animation
 	if get_parent().velocity.length() > 0:
 		$AnimationPlayer.play("walk")
@@ -29,3 +31,11 @@ func _process(_delta):
 	
 	
 	#end _process
+	
+	
+	
+func play_footstep():
+	# Instantiate a SandStepsPlayer
+	var sans_steps_instance : = sand_steps_player.instantiate()
+	add_child.call_deferred(sans_steps_instance)
+	#end play_footstep

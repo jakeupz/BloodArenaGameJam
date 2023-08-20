@@ -1,14 +1,16 @@
-[gd_scene load_steps=25 format=3 uid="uid://bpv6h0idmbwq8"]
+[gd_scene load_steps=27 format=3 uid="uid://bpv6h0idmbwq8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_1ssqm"]
 [ext_resource type="Texture2D" uid="uid://dyw8rmwwbj67b" path="res://Assets/Player/PlayerLegsSpritesheet.png" id="2_8au3m"]
 [ext_resource type="Texture2D" uid="uid://bx1kh8ckmiape" path="res://Assets/Player/PlayerSpritesheet.png" id="2_y6rxi"]
 [ext_resource type="Texture2D" uid="uid://bcb2vwmnxu17x" path="res://Assets/Player/Light.png" id="3_ajb3v"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerLegsSprite.gd" id="3_bbyao"]
+[ext_resource type="AudioStream" uid="uid://bmyy1yt2y53a0" path="res://Resources/Audio/SandStepsRandomizer.tres" id="4_hlvlg"]
 [ext_resource type="Texture2D" uid="uid://dsbjo4n82s2mn" path="res://Assets/Player/Attacks/Chain Spritesheet.png" id="4_r46l7"]
 [ext_resource type="AudioStream" uid="uid://b63xw7oispmi2" path="res://Assets/Player/Attacks/chain_01.ogg" id="5_b7qty"]
 [ext_resource type="Script" path="res://Scenes/Player/Attacks/ChainAttack.gd" id="6_1qukd"]
 [ext_resource type="AudioStream" uid="uid://bmwao5a7vnvto" path="res://Assets/Player/Attacks/chain_02.ogg" id="6_jrhp8"]
+[ext_resource type="Script" path="res://Scenes/Player/SandStepsSFX.gd" id="11_wnfm5"]
 
 [sub_resource type="Animation" id="Animation_wxupx"]
 length = 0.05
@@ -23,6 +25,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SandStepsSFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_nk8tk"]
@@ -76,14 +90,38 @@ tracks/0/keys = {
 "update": 1,
 "values": [23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("../SandStepsSFX:stream")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.261, 0.7395),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hlvlg")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("../SandStepsSFX:playing")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1305, 0.435, 0.6525),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SandStepsSFX")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1305, 0.6525),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -559,5 +597,10 @@ disabled = true
 stream = SubResource("AudioStreamRandomizer_a80cy")
 volume_db = -16.0
 pitch_scale = 0.75
+
+[node name="SandStepsSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hlvlg")
+max_polyphony = 8
+script = ExtResource("11_wnfm5")
 
 [connection signal="animation_finished" from="PlayerSprite/AnimationPlayer" to="." method="_on_player_attack_animation_finished"]
