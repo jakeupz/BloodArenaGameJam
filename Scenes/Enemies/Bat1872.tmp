@@ -43,48 +43,39 @@ _data = {
 }
 
 [node name="Bat" type="CharacterBody2D" groups=["enemy"]]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_vb43c")
-max_health = 2
+max_health = null
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BatSprite" type="Sprite2D" parent="."]
+rotation = -1.57079
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_0kyki")
 hframes = 18
 frame = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BatSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_lak7a")
 }
 
-[node name="Hitbox" type="CollisionPolygon2D" parent="." groups=["enemy"]]
-rotation = 1.5708
-scale = Vector2(2, 2)
-polygon = PackedVector2Array(0, 9, -22, -3, -6, -5, -6, -9, 6, -9, 6, -5, 22, -3)
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="Hurtbox" type="CollisionPolygon2D" parent="Area2D" groups=["enemy"]]
-rotation = 1.5708
-scale = Vector2(2, 2)
-polygon = PackedVector2Array(0, 9, -22, -3, -6, -5, -6, -9, 6, -9, 6, -5, 22, -3)
-
-[node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BatSprite"]
 stream = ExtResource("3_4yjko")
 volume_db = -5.0
 attenuation = 20.0
 
-[node name="HealthLabel" type="Label" parent="."]
+[node name="BatHealthLabel" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.171
 anchor_right = 0.5
 anchor_bottom = 0.171
-offset_right = 22.0
-offset_bottom = 26.0
+offset_left = 19.5
+offset_top = -7.292
+offset_right = 39.5
+offset_bottom = 18.708
 grow_horizontal = 2
-text = "HP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 9, -22, -3, -6, -5, -6, -9, 6, -9, 6, -5, 22, -3)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvxmvfr3voj55"]
+
+[ext_resource type="AudioStream" uid="uid://cgijp2yldj3q4" path="res://Assets/Enemies/Bat/SFX/bath_death.ogg" id="1_uaath"]
+[ext_resource type="Script" path="res://Scripts/SoundInstance.gd" id="2_lxw1o"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jsxif"]
+streams_count = 1
+playback_mode = 1
+random_pitch = 1.15
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("1_uaath")
+stream_0/weight = 1.0
+
+[node name="BatDeathSFX" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStreamRandomizer_jsxif")
+volume_db = -5.0
+attenuation = 20.0
+max_polyphony = 4
+script = ExtResource("2_lxw1o")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
