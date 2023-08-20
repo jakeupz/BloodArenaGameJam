@@ -1,0 +1,22 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://bmyy1yt2y53a0"]
+
+[ext_resource type="AudioStream" uid="uid://bnlun1uyae6q3" path="res://Assets/Player/SandSteps/sandstep1.ogg" id="1_srfxn"]
+[ext_resource type="AudioStream" uid="uid://44hd2q0acoag" path="res://Assets/Player/SandSteps/sandstep2.ogg" id="2_nahs5"]
+[ext_resource type="AudioStream" uid="uid://17jxtenqohky" path="res://Assets/Player/SandSteps/sandstep3.ogg" id="3_bupx8"]
+[ext_resource type="AudioStream" uid="uid://bgaa1qig1b6pr" path="res://Assets/Player/SandSteps/sandstep4.ogg" id="4_6odox"]
+[ext_resource type="AudioStream" uid="uid://dlu6spvera7rl" path="res://Assets/Player/SandSteps/sandstep5.ogg" id="5_73b7y"]
+
+[resource]
+streams_count = 5
+playback_mode = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("1_srfxn")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_nahs5")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_bupx8")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_6odox")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_73b7y")
+stream_4/weight = 1.0
