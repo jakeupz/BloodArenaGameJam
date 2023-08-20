@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://e0yda8kxnywv"]
+
+[ext_resource type="AudioStream" uid="uid://8n8t0astlljw" path="res://Assets/Enemies/Bat/SFX/bat_hurt1.ogg" id="1_ax0xy"]
+[ext_resource type="AudioStream" uid="uid://1pgy88mtujvb" path="res://Assets/Enemies/Bat/SFX/bat_hurt2.ogg" id="2_xlbdu"]
+
+[resource]
+streams_count = 2
+playback_mode = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("1_ax0xy")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_xlbdu")
+stream_1/weight = 1.0
