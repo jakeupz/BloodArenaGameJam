@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://2snl8j1ugwj8"]
+[gd_scene load_steps=8 format=3 uid="uid://2snl8j1ugwj8"]
 
+[ext_resource type="PackedScene" uid="uid://dngikja1ja7ly" path="res://Scenes/UI/vignette.tscn" id="1_jxcnx"]
 [ext_resource type="TileSet" uid="uid://mvdtjtwqlhlo" path="res://Resources/Tilesets/Environment.tres" id="1_kl3bx"]
 [ext_resource type="PackedScene" uid="uid://bpv6h0idmbwq8" path="res://Scenes/Player/player.tscn" id="2_ccv03"]
 [ext_resource type="PackedScene" uid="uid://mvymopmtlkv5" path="res://Scenes/Game_Camera/game_camera.tscn" id="3_efjgu"]
 [ext_resource type="PackedScene" uid="uid://o53byxsxakiu" path="res://Scenes/Enemies/Bat.tscn" id="4_jotpb"]
+[ext_resource type="PackedScene" uid="uid://c80cvffeosj4t" path="res://Scenes/Enemies/Person_Enemy.tscn" id="5_wmbe3"]
+[ext_resource type="PackedScene" uid="uid://ypn77dpf6tqw" path="res://Scenes/UI/Blood_Counter.tscn" id="6_wpdlk"]
 
 [node name="Main" type="Node"]
+
+[node name="Vignette" parent="." instance=ExtResource("1_jxcnx")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_kl3bx")
@@ -54,3 +59,15 @@ position = Vector2(659, 189)
 
 [node name="Bat6" parent="." instance=ExtResource("4_jotpb")]
 position = Vector2(677, 133)
+
+[node name="PersonEnemy2" parent="." instance=ExtResource("5_wmbe3")]
+position = Vector2(385, 41)
+
+[node name="PersonEnemy" parent="." instance=ExtResource("5_wmbe3")]
+position = Vector2(377, 101)
+
+[node name="Entities" type="Node2D" parent="." groups=["entities_layer"]]
+position = Vector2(530, 147)
+scale = Vector2(0.5, 0.5)
+
+[node name="BloodCounter" parent="." instance=ExtResource("6_wpdlk")]

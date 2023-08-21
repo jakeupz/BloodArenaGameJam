@@ -510,7 +510,7 @@ method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_ch6or")
 }
-blend_times = [&"unused_idle", &"unused_idle", 0.25, &"unused_idle", &"unused_run", 0.25]
+blend_times = [&"unused_idle", &"unused_run", 0.25, &"unused_idle", &"unused_idle", 0.25]
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5

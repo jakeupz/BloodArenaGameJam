@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv7br2yxnooh1"]
+
+[ext_resource type="Script" path="res://Scenes/Components/blood_drop_component.gd" id="1_y728y"]
+
+[node name="BloodDropComponent" type="Node"]
+script = ExtResource("1_y728y")

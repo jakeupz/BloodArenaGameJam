@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlbwghgn52cgq"
-path="res://.godot/imported/placeholderbat.png-b6a809e7c76414291b14b3e06b01c904.ctex"
+uid="uid://diyn0vljy85mv"
+path="res://.godot/imported/giblet_variations.png-f398a6896d16be77fce93bc75cecac37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/placeholderbat.png"
-dest_files=["res://.godot/imported/placeholderbat.png-b6a809e7c76414291b14b3e06b01c904.ctex"]
+source_file="res://Assets/Objects/giblet_variations.png"
+dest_files=["res://.godot/imported/giblet_variations.png-f398a6896d16be77fce93bc75cecac37.ctex"]
 
 [params]
 
