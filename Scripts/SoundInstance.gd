@@ -9,13 +9,11 @@ extends AudioStreamPlayer2D
 # all signals are set up correctly or this could cause memory leaks.
 
 func _ready():
-	print("SoundInstanced")
 	# Play the sound
 	play()
 	#end ready
 
 # When the sound is done playing, free the audio stream player from memory
 func _on_finished():
-	print("freed queue!")
 	queue_free()
 	#end _on_finished
