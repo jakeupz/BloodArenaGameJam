@@ -27,6 +27,7 @@ acceleration = 20.0
 [node name="BloodDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_11m1p")]
 blood_drop_scene = ExtResource("5_5oevn")
 health_component = NodePath("../HealthComponent")
+spawn_amount = 100
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ostv2")]
 health_component = NodePath("../HealthComponent")

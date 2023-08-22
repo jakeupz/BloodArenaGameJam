@@ -17,7 +17,7 @@ func damage(damage_amount: float):
 	# A "hit taken" signal would happen but nothings implemented right now
 	health_changed.emit()
 	#Calls at the end of the current frame
-	Callable(check_death).call_deferred()
+#	Callable(check_death).call_deferred()
 
 # If we need a health bar
 func get_health_percent():
@@ -28,5 +28,6 @@ func get_health_percent():
 # This will emit the died signal in death component
 func check_death():
 	if current_health == 0:
+		print("I emitted 'died' in health component" )
 		died.emit()
 		owner.queue_free()

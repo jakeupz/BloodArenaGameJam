@@ -4,7 +4,8 @@ extends Node
 @export var blood_drop_scene: PackedScene
 @export var health_component: Node
 	# Potental multidrops, not working right
-#@export_range(0, 100, 1) var spawn_amount: float = 1
+@export_range(0, 100, 1) var spawn_amount: int = 10
+var spawn_start: int = 0
 
 func _ready():
 	(health_component as HealthComponent).died.connect(on_died)
@@ -28,8 +29,13 @@ func on_died():
 		
 	# Spawn blood to collect
 	var spawn_position = (owner as Node2D).global_position
-	var blood_drop_instance = blood_drop_scene.instantiate() as Node2D
-	var entities_layer = get_tree().get_first_node_in_group("entities_layer") 
-	entities_layer.get_parent().call_deferred("add_child", blood_drop_instance)
-	blood_drop_instance.global_position = spawn_position
+	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
+	
+#	entities_layer.get_parent().call_deferred("add_child", blood_drop_instance)
+	while spawn_start < spawn_amount:
+		var blood_drop_instance = blood_drop_scene.instantiate() as Node2D
+#		entities_layer.add_child(blood_drop_instance)
+		entities_layer.get_parent().call_deferred("add_child", blood_drop_instance)
+		blood_drop_instance.global_position = spawn_position
+		spawn_start += 1
 	#end on_died

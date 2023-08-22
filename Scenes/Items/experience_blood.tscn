@@ -4,14 +4,14 @@
 [ext_resource type="Script" path="res://Scenes/Items/experience_blood.gd" id="1_lsciq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bne7g"]
-radius = 20.0
+radius = 30.0
 
 [node name="ExperienceBlood" type="Node2D"]
 script = ExtResource("1_lsciq")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="BloodArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BloodArea2D"]
 shape = SubResource("CircleShape2D_bne7g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
