@@ -10,6 +10,10 @@
 [ext_resource type="Script" path="res://Scenes/Player/Attacks/ChainAttack.gd" id="6_1qukd"]
 [ext_resource type="AudioStream" uid="uid://bmwao5a7vnvto" path="res://Assets/Player/Attacks/chain_02.ogg" id="6_jrhp8"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybqe4"]
+radius = 12.0
+height = 42.0
+
 [sub_resource type="Animation" id="Animation_wxupx"]
 length = 0.05
 tracks/0/type = "value"
@@ -473,12 +477,8 @@ _data = {
 "unused_sword_outward_slash": SubResource("Animation_kdv6a")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybqe4"]
-radius = 11.0
-height = 26.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bcty"]
-size = Vector2(23.6812, 6.42088)
+size = Vector2(24.1865, 6.37208)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a80cy"]
 streams_count = 2
@@ -490,7 +490,19 @@ stream_1/stream = ExtResource("6_jrhp8")
 stream_1/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_1ssqm")
+
+[node name="SpecialCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ybqe4")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bruh"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="AggroActivator" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_ybqe4")
 
 [node name="LegDisconnector" type="RemoteTransform2D" parent="."]
 editor_description = "This lets us decouple the rotation information of the torso from the legs"
@@ -510,7 +522,7 @@ method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_ch6or")
 }
-blend_times = [&"unused_idle", &"unused_idle", 0.25, &"unused_idle", &"unused_run", 0.25]
+blend_times = [&"unused_idle", &"unused_run", 0.25, &"unused_idle", &"unused_idle", 0.25]
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
@@ -519,14 +531,12 @@ texture = ExtResource("2_y6rxi")
 offset = Vector2(0, 2)
 hframes = 30
 vframes = 3
+frame = 83
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_ae6dg")
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_ybqe4")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -549,8 +559,8 @@ offset = Vector2(0, -24)
 hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChainAttackAnchor/ChainAttack"]
-position = Vector2(9.9567, -5.35837)
-rotation = -0.252383
+position = Vector2(9.46933, -5.58922)
+rotation = -0.261799
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_8bcty")
 disabled = true
