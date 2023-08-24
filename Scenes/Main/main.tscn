@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://2snl8j1ugwj8"]
+[gd_scene load_steps=9 format=3 uid="uid://2snl8j1ugwj8"]
 
 [ext_resource type="PackedScene" uid="uid://dngikja1ja7ly" path="res://Scenes/UI/vignette.tscn" id="1_jxcnx"]
 [ext_resource type="TileSet" uid="uid://mvdtjtwqlhlo" path="res://Resources/Tilesets/Environment.tres" id="1_kl3bx"]
 [ext_resource type="PackedScene" uid="uid://bpv6h0idmbwq8" path="res://Scenes/Player/player.tscn" id="2_ccv03"]
+[ext_resource type="PackedScene" uid="uid://b8itp4gersw5l" path="res://Scenes/Manager/enemy_manager.tscn" id="2_edswl"]
 [ext_resource type="PackedScene" uid="uid://mvymopmtlkv5" path="res://Scenes/Game_Camera/game_camera.tscn" id="3_efjgu"]
-
 [ext_resource type="PackedScene" uid="uid://o53byxsxakiu" path="res://Scenes/Enemies/Bat.tscn" id="4_jotpb"]
 [ext_resource type="Texture2D" uid="uid://bay5tmja3v5ip" path="res://Assets/Environment/Blood Fountain.png" id="5_yshgy"]
 [ext_resource type="PackedScene" uid="uid://dcq2q4p4eqyra" path="res://Scenes/Main/test.tscn" id="6_w7jxs"]
@@ -12,6 +12,8 @@
 [node name="Main" type="Node"]
 
 [node name="Vignette" parent="." instance=ExtResource("1_jxcnx")]
+
+[node name="EnemyManager" parent="." instance=ExtResource("2_edswl")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_kl3bx")
@@ -46,12 +48,9 @@ position = Vector2(283, 160)
 visible = false
 color = Color(0.05, 0.05, 0.05, 1)
 
-[node name="EnemyManager" parent="." instance=ExtResource("5_acy2e")]
-
 [node name="Entities" type="Node2D" parent="." groups=["entities_layer"]]
 position = Vector2(530, 147)
 scale = Vector2(0.5, 0.5)
-
 
 [node name="Bat6" parent="." instance=ExtResource("4_jotpb")]
 position = Vector2(677, 133)
