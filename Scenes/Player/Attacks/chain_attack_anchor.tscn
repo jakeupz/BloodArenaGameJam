@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://xop7d5gtppbu"]
+
+[ext_resource type="Script" path="res://Scenes/Player/Attacks/ChainAttack.gd" id="1_vgd42"]
+[ext_resource type="Texture2D" uid="uid://dsbjo4n82s2mn" path="res://Assets/Player/Attacks/Chain Spritesheet.png" id="2_4t26i"]
+[ext_resource type="AudioStream" uid="uid://b63xw7oispmi2" path="res://Assets/Player/Attacks/chain_01.ogg" id="3_ct6x1"]
+[ext_resource type="AudioStream" uid="uid://bmwao5a7vnvto" path="res://Assets/Player/Attacks/chain_02.ogg" id="4_4ovyc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bcty"]
+size = Vector2(23.6812, 6.42088)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a80cy"]
+streams_count = 2
+random_pitch = 1.12
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("3_ct6x1")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_4ovyc")
+stream_1/weight = 1.0
+
+[node name="ChainAttackAnchor" type="Node2D"]
+position = Vector2(10, 10)
+rotation = 3.92699
+
+[node name="ChainAttack" type="Area2D" parent="." groups=["player_attacks"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_vgd42")
+
+[node name="ChainSprite" type="Sprite2D" parent="ChainAttack"]
+texture = ExtResource("2_4t26i")
+offset = Vector2(0, -24)
+hframes = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChainAttack"]
+position = Vector2(9.9567, -5.35837)
+rotation = -0.252383
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_8bcty")
+disabled = true
+
+[node name="ChainSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_a80cy")
+volume_db = -16.0
+pitch_scale = 0.75

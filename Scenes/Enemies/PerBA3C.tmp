@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://c80cvffeosj4t"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Person_Enemy.gd" id="1_6pbpq"]
+[ext_resource type="Texture2D" uid="uid://doccw1swn7ja6" path="res://Assets/Player/PlaceholderPlayer.png" id="1_nlnx4"]
+[ext_resource type="PackedScene" uid="uid://u1m57c2tfe30" path="res://Scenes/Components/death_component.tscn" id="2_ostv2"]
+[ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="3_1qset"]
+[ext_resource type="PackedScene" uid="uid://wud6ff8hcvhk" path="res://Scenes/Components/velocity_component.tscn" id="3_fc2w3"]
+[ext_resource type="Script" path="res://Scenes/Components/hurtbox_component.gd" id="5_f76fp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfa02"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mb1k3"]
+radius = 8.0
+
+[node name="PersonEnemy" type="CharacterBody2D"]
+script = ExtResource("1_6pbpq")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_1qset")]
+max_health = 2.0
+
+[node name="VelocityComponent" parent="." instance=ExtResource("3_fc2w3")]
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ostv2")]
+health_component = NodePath("../HealthComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.57079
+texture = ExtResource("1_nlnx4")
+offset = Vector2(0, -2)
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+script = ExtResource("5_f76fp")
+
+[node name="HurtboxCollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_gfa02")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mb1k3")
+
+[connection signal="area_entered" from="HurtboxComponent" to="HurtboxComponent" method="_on_area_entered"]

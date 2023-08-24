@@ -511,7 +511,6 @@ update_rotation = false
 
 [node name="PlayerLegsSprite" type="Sprite2D" parent="."]
 top_level = true
-rotation = -1.5708
 texture = ExtResource("2_8au3m")
 hframes = 23
 vframes = 2
@@ -563,11 +562,15 @@ position = Vector2(9.46933, -5.58922)
 rotation = -0.261799
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_8bcty")
-disabled = true
 
 [node name="ChainSFX" type="AudioStreamPlayer" parent="ChainAttackAnchor"]
 stream = SubResource("AudioStreamRandomizer_a80cy")
 volume_db = -16.0
 pitch_scale = 0.75
+
+[node name="PlayerArea2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+shape = SubResource("CapsuleShape2D_ybqe4")
 
 [connection signal="animation_finished" from="PlayerSprite/AnimationPlayer" to="." method="_on_player_attack_animation_finished"]
