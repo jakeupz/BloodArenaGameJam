@@ -43,7 +43,6 @@ _data = {
 }
 
 [node name="Bat" type="CharacterBody2D" groups=["enemy"]]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_vb43c")
 max_health = 2
 

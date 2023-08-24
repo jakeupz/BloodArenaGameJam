@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://c80cvffeosj4t"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Person_Enemy.gd" id="1_6pbpq"]
+[ext_resource type="Texture2D" uid="uid://doccw1swn7ja6" path="res://Assets/Player/PlaceholderPlayer.png" id="1_nlnx4"]
+[ext_resource type="PackedScene" uid="uid://u1m57c2tfe30" path="res://Scenes/Components/death_component.tscn" id="2_ostv2"]
+[ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="3_1qset"]
+[ext_resource type="PackedScene" uid="uid://wud6ff8hcvhk" path="res://Scenes/Components/velocity_component.tscn" id="3_fc2w3"]
+[ext_resource type="PackedScene" uid="uid://dv7br2yxnooh1" path="res://Scenes/Components/blood_drop_component.tscn" id="4_11m1p"]
+[ext_resource type="PackedScene" uid="uid://fygpokdod3lj" path="res://Scenes/Items/experience_blood.tscn" id="5_5oevn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_et18u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mb1k3"]
+radius = 12.0
+
+[node name="PersonEnemy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_6pbpq")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_1qset")]
+max_health = 2.0
+current_health = 2.0
+
+[node name="VelocityComponent" parent="." instance=ExtResource("3_fc2w3")]
+max_speed = 80
+acceleration = 20.0
+
+[node name="BloodDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_11m1p")]
+blood_drop_scene = ExtResource("5_5oevn")
+health_component = NodePath("../HealthComponent")
+spawn_amount = 100
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ostv2")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_et18u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.57079
+texture = ExtResource("1_nlnx4")
+offset = Vector2(0, -2)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_mb1k3")
+
+[node name="HealthLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.171
+anchor_right = 0.5
+anchor_bottom = 0.171
+offset_right = 22.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
