@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dngikja1ja7ly"]
+
+[ext_resource type="Script" path="res://Scenes/UI/vignette.gd" id="1_eaelr"]
+[ext_resource type="Shader" path="res://Scenes/UI/vignette.gdshader" id="2_ipdjs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uw4xw"]
+shader = ExtResource("2_ipdjs")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[node name="Vignette" type="CanvasLayer"]
+script = ExtResource("1_eaelr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_uw4xw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

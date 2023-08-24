@@ -47,7 +47,6 @@ func _process(delta):
 	
 	#end _process
 
-
 func updateAnimation():
 	# If no active animation is playing, play the looping idle animation.
 	if ( not $PlayerSprite/AnimationPlayer.is_playing() ) and velocity.length() == 0:

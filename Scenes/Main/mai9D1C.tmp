@@ -1,20 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://2snl8j1ugwj8"]
+[gd_scene load_steps=7 format=3 uid="uid://2snl8j1ugwj8"]
 
-[ext_resource type="PackedScene" uid="uid://dngikja1ja7ly" path="res://Scenes/UI/vignette.tscn" id="1_jxcnx"]
 [ext_resource type="TileSet" uid="uid://mvdtjtwqlhlo" path="res://Resources/Tilesets/Environment.tres" id="1_kl3bx"]
 [ext_resource type="PackedScene" uid="uid://bpv6h0idmbwq8" path="res://Scenes/Player/player.tscn" id="2_ccv03"]
-[ext_resource type="PackedScene" uid="uid://b8itp4gersw5l" path="res://Scenes/Manager/enemy_manager.tscn" id="2_edswl"]
 [ext_resource type="PackedScene" uid="uid://mvymopmtlkv5" path="res://Scenes/Game_Camera/game_camera.tscn" id="3_efjgu"]
 [ext_resource type="PackedScene" uid="uid://o53byxsxakiu" path="res://Scenes/Enemies/Bat.tscn" id="4_jotpb"]
 [ext_resource type="Texture2D" uid="uid://bay5tmja3v5ip" path="res://Assets/Environment/Blood Fountain.png" id="5_yshgy"]
 [ext_resource type="PackedScene" uid="uid://dcq2q4p4eqyra" path="res://Scenes/Main/test.tscn" id="6_w7jxs"]
-[ext_resource type="PackedScene" uid="uid://ypn77dpf6tqw" path="res://Scenes/UI/Blood_Counter.tscn" id="9_4ncx8"]
 
 [node name="Main" type="Node"]
-
-[node name="Vignette" parent="." instance=ExtResource("1_jxcnx")]
-
-[node name="EnemyManager" parent="." instance=ExtResource("2_edswl")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_kl3bx")
@@ -40,7 +33,8 @@ layer_2/tile_data = PackedInt32Array(65542, 196609, 1, 131085, 196609, 0, 458770
 position = Vector2(284, 160)
 
 [node name="test" parent="." instance=ExtResource("6_w7jxs")]
-position = Vector2(722, 504)
+position = Vector2(870, 410)
+speed = 50
 
 [node name="GameCamera" parent="." instance=ExtResource("3_efjgu")]
 position = Vector2(283, 160)
@@ -49,9 +43,20 @@ position = Vector2(283, 160)
 visible = false
 color = Color(0.05, 0.05, 0.05, 1)
 
-[node name="Entities" type="Node2D" parent="." groups=["entities_layer"]]
+[node name="Bat" parent="." instance=ExtResource("4_jotpb")]
 position = Vector2(530, 147)
-scale = Vector2(0.5, 0.5)
+
+[node name="Bat2" parent="." instance=ExtResource("4_jotpb")]
+position = Vector2(558, 189)
+
+[node name="Bat3" parent="." instance=ExtResource("4_jotpb")]
+position = Vector2(569, 100)
+
+[node name="Bat4" parent="." instance=ExtResource("4_jotpb")]
+position = Vector2(561, 236)
+
+[node name="Bat5" parent="." instance=ExtResource("4_jotpb")]
+position = Vector2(659, 189)
 
 [node name="Bat6" parent="." instance=ExtResource("4_jotpb")]
 position = Vector2(677, 133)
@@ -61,5 +66,3 @@ position = Vector2(785, 121)
 rotation = 1.5708
 scale = Vector2(0.369006, 0.369006)
 texture = ExtResource("5_yshgy")
-
-[node name="BloodCounter" parent="." instance=ExtResource("9_4ncx8")]

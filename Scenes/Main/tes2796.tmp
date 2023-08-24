@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcq2q4p4eqyra"]
+
+[ext_resource type="Script" path="res://Scenes/Main/test.gd" id="1_00wq2"]
+[ext_resource type="Texture2D" uid="uid://b30qwgl4dpaki" path="res://icon.svg" id="1_tlbip"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_041t3"]
+radius = 60.1664
+
+[node name="test" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
+collision_layer = 2
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_00wq2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.552941, 0.988235, 1)
+texture = ExtResource("1_tlbip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_041t3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
