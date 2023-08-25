@@ -6,19 +6,36 @@ extends CharacterBody2D
 @onready var velocity_component = $VelocityComponent
 
 var bat_death_sound = preload("res://Scenes/Enemies/BatDeathSFX.tscn")
+var player = preload ("res://Scenes/Player/player.tscn")
 
 func _ready():
-	pass
+	# Play looping walk animation
+	$Sprite2D/AnimationPlayer.play("walk")
+	
+	# Pick a random part of the walk animation
+	# so not all enemies walk in sync
+	$Sprite2D/AnimationPlayer.seek(randf_range(0.0, 1))
+	#end ready
 
 
 func _process(_delta):
 	velocity_component.accelerate_to_player()
 	velocity_component.move(self)
+
 	
-	# Update the bat debugging health
+	# Update the debugging health
 	$HealthLabel.text = str($HealthComponent.current_health)
 	# Keep the health label upright
 	$HealthLabel.rotation = -rotation
+	
+	# Look at the player's position
+	# Main > Enemy Manager > Spawned Enemy
+	# Enemy Manager and Player are sibling nodes
+	look_at(get_parent().get_parent().get_node("Player").position)
+	
+	
+	# Set walking animation speed based on velocity
+	$Sprite2D/AnimationPlayer.speed_scale = velocity.length() / 100
 	#end _process
 
 func _on_hurtbox_area_entered(area):
@@ -39,3 +56,13 @@ func _on_hurtbox_area_entered(area):
 			$HealthComponent.check_death()
 			#end if
 	#end _on_area_entered
+
+var sand_steps_player = preload("res://Scenes/Player/SandStepsPlayer.tscn")
+
+func play_footstep():
+	# Instantiate a SandStepsPlayer
+	var sand_steps_instance : = sand_steps_player.instantiate()
+	sand_steps_instance.pitch_scale = 0.7
+	sand_steps_instance.attenuation = 10
+	add_child.call_deferred(sand_steps_instance)
+	#end play_footstep

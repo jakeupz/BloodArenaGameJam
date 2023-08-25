@@ -3,7 +3,8 @@
 [ext_resource type="AudioStream" uid="uid://bmyy1yt2y53a0" path="res://Resources/Audio/SandStepsRandomizer.tres" id="1_1x5k5"]
 
 [sub_resource type="GDScript" id="GDScript_ejmay"]
-script/source = "extends AudioStreamPlayer
+script/source = "extends AudioStreamPlayer2D
+
 
 
 # Play a footstep when I'm spawned in
@@ -19,10 +20,11 @@ func _on_finished():
 	#end _on_finished
 "
 
-[node name="SandStepsPlayer" type="AudioStreamPlayer"]
+[node name="SandStepsPlayer" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_1x5k5")
 volume_db = -15.0
 pitch_scale = 1.1
+attenuation = 1e-05
 max_polyphony = 32
 script = SubResource("GDScript_ejmay")
 

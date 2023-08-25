@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://EnemyManager.gd" id="1_1qsuy"]
 [ext_resource type="PackedScene" uid="uid://o53byxsxakiu" path="res://Scenes/Enemies/Bat.tscn" id="2_hqa2o"]
-[ext_resource type="PackedScene" uid="uid://c80cvffeosj4t" path="res://Scenes/Enemies/Person_Enemy.tscn" id="3_or432"]
+[ext_resource type="PackedScene" uid="uid://bca7hgxws3ys5" path="res://Scenes/Enemies/Vampire.tscn" id="3_g0bwx"]
 
 [node name="EnemyManager" type="Node"]
 script = ExtResource("1_1qsuy")
 bat_enemy_scene = ExtResource("2_hqa2o")
-person_enemy_scene = ExtResource("3_or432")
+vampire_enemy_scene = ExtResource("3_g0bwx")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

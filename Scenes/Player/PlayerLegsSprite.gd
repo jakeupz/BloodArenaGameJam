@@ -36,6 +36,7 @@ func _process(_delta):
 	
 func play_footstep():
 	# Instantiate a SandStepsPlayer
-	var sans_steps_instance : = sand_steps_player.instantiate()
-	add_child.call_deferred(sans_steps_instance)
+	var sand_steps_instance : = sand_steps_player.instantiate()
+	sand_steps_instance.attenuation = 0.0
+	add_child.call_deferred(sand_steps_instance)
 	#end play_footstep
