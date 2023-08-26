@@ -498,8 +498,8 @@ collision_mask = 7
 script = ExtResource("1_1ssqm")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_h613c")]
-max_health = 2.0
-current_health = 2.0
+max_health = 1.0
+current_health = 1.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_71wy5")]
 max_speed = 200

@@ -43,4 +43,6 @@ func move(character_body: CharacterBody2D):
 
 
 func rotate_to_player():
+	if player == null:
+		return
 	owner.look_at(player.global_position)

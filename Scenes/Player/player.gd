@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var damage_interval_timer = $DamageIntervalTimer
 @onready var health_component = $HealthComponent
 @onready var velocity_component = $VelocityComponent
+
 var number_colliding_bodies = 0
 
 signal health_set_on_ui
@@ -83,8 +84,8 @@ func check_deal_damage():
 	print("Current player health: ", health_component.current_health)
 	if health_component.current_health == 0:
 		health_component.check_death()
-		get_tree().paused = true #GAME PAUSED FOR GAME OVER MENU
-
+		
+		
 func on_body_entered(_other_body: Node2D):
 	if _other_body.is_in_group("enemy"):
 		number_colliding_bodies += 1
