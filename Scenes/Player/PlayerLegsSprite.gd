@@ -6,6 +6,8 @@ var sand_steps_player = preload("res://Scenes/Player/SandStepsPlayer.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rotation = get_parent().velocity.angle()
+	# Start the walk animation
+	$AnimationPlayer.play("walk")
 	#end _ready
 
 
@@ -13,11 +15,6 @@ func _ready():
 func _process(_delta):
 	# Set the rotation of the legs based on which direction of WASD is pressed
 	rotation = get_parent().velocity.angle() - (PI/2)
-	
-	# If moving, play the run animation
-	if get_parent().velocity.length() > 0:
-		$AnimationPlayer.play("walk")
-		#end if
 
 	# Set how fast the legs are animated based on the player's movement speed
 	# Additional info:
@@ -37,6 +34,7 @@ func _process(_delta):
 func play_footstep():
 	# Instantiate a SandStepsPlayer
 	var sand_steps_instance : = sand_steps_player.instantiate()
+	# Make the sandsteps always heard bc this is the player character
 	sand_steps_instance.attenuation = 0.0
 	add_child.call_deferred(sand_steps_instance)
 	#end play_footstep

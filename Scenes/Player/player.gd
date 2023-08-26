@@ -2,16 +2,10 @@ extends CharacterBody2D
 
 const MAX_SPEED = 200
 const ACCELERATION_SMOOTHING = 25
-
-
-func _ready():
-	# Play the appropriate idle animation that loops automatically to start
-	updateAnimation()
-	#end _ready
+#var anim_state_machine_playback = $PlayerSprite/AnimationTree["parameters/playback"]
 
 
 func _process(delta):
-
 	# Movement code
 	# Look at the mouse
 	look_at(get_global_mouse_position())
@@ -37,22 +31,14 @@ func _process(delta):
 		
 		# Attack initiated, set global var, play anim & sfx
 		Global.currently_attacking = true
-		$PlayerSprite/AnimationPlayer.play("chain_swing")
+		# Play the chain attacak animation and sfx
+		$PlayerSprite/AnimationTree["parameters/playback"].travel("chain_swing")
 		$ChainAttackAnchor/ChainSFX.play()
 		#end if
 	# Attack code end
 	
-	# Run the animation function
-	updateAnimation()
 	
 	#end _process
-
-func updateAnimation():
-	# If no active animation is playing, play the looping idle animation.
-	if ( not $PlayerSprite/AnimationPlayer.is_playing() ) and velocity.length() == 0:
-		$PlayerSprite/AnimationPlayer.play("idle")
-		#end if
-	#end updateAnimation
 
 
 func get_movement_vector():
@@ -63,8 +49,10 @@ func get_movement_vector():
 
 
 # Set the global currently_attacking variable to false if an attack animation finished
-func _on_player_attack_animation_finished(anim_name):
+func _on_player_animation_finished(anim_name):
+	# If chain attack
 	if anim_name == "chain_swing":
 		Global.currently_attacking = false
 		#end if
 	#end _on_player_attack_animation_finished
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bpv6h0idmbwq8"]
+[gd_scene load_steps=30 format=3 uid="uid://bpv6h0idmbwq8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_1ssqm"]
 [ext_resource type="Texture2D" uid="uid://dyw8rmwwbj67b" path="res://Assets/Player/PlayerLegsSpritesheet.png" id="2_8au3m"]
@@ -477,6 +477,27 @@ _data = {
 "unused_sword_outward_slash": SubResource("Animation_kdv6a")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h56ic"]
+animation = &"chain_swing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k6p1k"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xyiyp"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ugf1n"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gqrym"]
+states/Start/position = Vector2(286, 111)
+states/chain_swing/node = SubResource("AnimationNodeAnimation_h56ic")
+states/chain_swing/position = Vector2(546, 111)
+states/idle/node = SubResource("AnimationNodeAnimation_k6p1k")
+states/idle/position = Vector2(418, 111)
+transitions = ["chain_swing", "idle", SubResource("AnimationNodeStateMachineTransition_xyiyp"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_ugf1n")]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bcty"]
 size = Vector2(23.6812, 6.42088)
 
@@ -530,12 +551,17 @@ texture = ExtResource("2_y6rxi")
 offset = Vector2(0, 2)
 hframes = 30
 vframes = 3
-frame = 60
+frame = 19
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_ae6dg")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="PlayerSprite"]
+tree_root = SubResource("AnimationNodeStateMachine_gqrym")
+anim_player = NodePath("../AnimationPlayer")
+active = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -562,6 +588,7 @@ position = Vector2(9.9567, -5.35837)
 rotation = -0.252383
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_8bcty")
+disabled = true
 
 [node name="ChainSFX" type="AudioStreamPlayer" parent="ChainAttackAnchor"]
 stream = SubResource("AudioStreamRandomizer_a80cy")
@@ -573,4 +600,4 @@ pitch_scale = 0.75
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
 shape = SubResource("CapsuleShape2D_ybqe4")
 
-[connection signal="animation_finished" from="PlayerSprite/AnimationPlayer" to="." method="_on_player_attack_animation_finished"]
+[connection signal="animation_finished" from="PlayerSprite/AnimationTree" to="." method="_on_player_animation_finished"]
