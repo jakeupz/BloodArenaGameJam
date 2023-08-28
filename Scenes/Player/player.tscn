@@ -498,8 +498,8 @@ collision_mask = 7
 script = ExtResource("1_1ssqm")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_h613c")]
-max_health = 1.0
-current_health = 1.0
+max_health = 3.0
+current_health = 3.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_71wy5")]
 max_speed = 200
@@ -538,7 +538,7 @@ method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_ch6or")
 }
-blend_times = [&"unused_idle", &"unused_idle", 0.25, &"unused_idle", &"unused_run", 0.25]
+blend_times = [&"unused_idle", &"unused_run", 0.25, &"unused_idle", &"unused_idle", 0.25]
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5

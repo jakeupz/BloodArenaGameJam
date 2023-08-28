@@ -75,13 +75,13 @@ func on_damage_interval_timer_timeout():
 	check_deal_damage()
 	
 func check_deal_damage():
-	print("Number of bodies: ", number_colliding_bodies)
+#	print("Number of bodies: ", number_colliding_bodies)
 	if number_colliding_bodies == 0 || !damage_interval_timer.is_stopped():
 		return
-	print("Current player health: ", health_component.current_health)
+#	print("Current player health: ", health_component.current_health)
 	health_component.damage(1)
 	damage_interval_timer.start()
-	print("Current player health: ", health_component.current_health)
+#	print("Current player health: ", health_component.current_health)
 	if health_component.current_health == 0:
 		health_component.check_death()
 		
