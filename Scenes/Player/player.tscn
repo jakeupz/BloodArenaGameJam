@@ -14,8 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://bmwao5a7vnvto" path="res://Assets/Player/Attacks/chain_02.ogg" id="6_jrhp8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybqe4"]
-radius = 12.0
-height = 42.0
+radius = 9.0
+height = 26.0
 
 [sub_resource type="Animation" id="Animation_wxupx"]
 length = 0.05
@@ -481,7 +481,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bcty"]
-size = Vector2(24.1865, 6.37208)
+size = Vector2(23.6812, 6.42088)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a80cy"]
 streams_count = 2
@@ -547,7 +547,7 @@ texture = ExtResource("2_y6rxi")
 offset = Vector2(0, 2)
 hframes = 30
 vframes = 3
-frame = 83
+frame = 60
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 libraries = {
@@ -575,8 +575,8 @@ offset = Vector2(0, -24)
 hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChainAttackAnchor/ChainAttack"]
-position = Vector2(9.46933, -5.58922)
-rotation = -0.261799
+position = Vector2(9.9567, -5.35837)
+rotation = -0.252383
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_8bcty")
 
