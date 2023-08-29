@@ -1,18 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://2snl8j1ugwj8"]
+[gd_scene load_steps=12 format=3 uid="uid://2snl8j1ugwj8"]
 
+[ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_81fvf"]
 [ext_resource type="PackedScene" uid="uid://dngikja1ja7ly" path="res://Scenes/UI/vignette.tscn" id="1_jxcnx"]
 [ext_resource type="TileSet" uid="uid://mvdtjtwqlhlo" path="res://Resources/Tilesets/Environment.tres" id="1_kl3bx"]
 [ext_resource type="PackedScene" uid="uid://bpv6h0idmbwq8" path="res://Scenes/Player/player.tscn" id="2_ccv03"]
 [ext_resource type="PackedScene" uid="uid://b8itp4gersw5l" path="res://Scenes/Manager/enemy_manager.tscn" id="2_edswl"]
+[ext_resource type="PackedScene" uid="uid://crn7631bng61f" path="res://Scenes/UI/end_screen.tscn" id="2_giunm"]
 [ext_resource type="PackedScene" uid="uid://mvymopmtlkv5" path="res://Scenes/Game_Camera/game_camera.tscn" id="3_efjgu"]
 [ext_resource type="PackedScene" uid="uid://o53byxsxakiu" path="res://Scenes/Enemies/Bat.tscn" id="4_jotpb"]
 [ext_resource type="PackedScene" uid="uid://dcq2q4p4eqyra" path="res://Scenes/Main/test.tscn" id="6_w7jxs"]
-[ext_resource type="PackedScene" uid="uid://ypn77dpf6tqw" path="res://Scenes/UI/Blood_Counter.tscn" id="9_4ncx8"]
-[ext_resource type="FontFile" uid="uid://cl4ndh2s83t7q" path="res://Scenes/UI/Fonts/BleedingPixels.ttf" id="9_k8k7y"]
-
+[ext_resource type="PackedScene" uid="uid://ypn77dpf6tqw" path="res://Scenes/UI/UI.tscn" id="9_4ncx8"]
 [node name="Main" type="Node"]
+script = ExtResource("1_81fvf")
+end_screen_scene = ExtResource("2_giunm")
 
 [node name="Vignette" parent="." instance=ExtResource("1_jxcnx")]
+
+[node name="UI" parent="." instance=ExtResource("9_4ncx8")]
 
 [node name="EnemyManager" parent="." instance=ExtResource("2_edswl")]
 
@@ -74,6 +78,3 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Bat6" parent="." instance=ExtResource("4_jotpb")]
 position = Vector2(677, 133)
-
-[node name="BloodCounter" parent="." instance=ExtResource("9_4ncx8")]
-follow_viewport_scale = 52.907
