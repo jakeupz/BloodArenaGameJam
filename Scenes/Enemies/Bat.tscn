@@ -43,6 +43,9 @@ _data = {
 }
 
 [node name="Bat" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+motion_mode = 1
 script = ExtResource("1_vb43c")
 max_health = 2
 
@@ -62,6 +65,8 @@ scale = Vector2(2, 2)
 polygon = PackedVector2Array(0, 9, -22, -3, -6, -5, -6, -9, 6, -9, 6, -5, 22, -3)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="Hurtbox" type="CollisionPolygon2D" parent="Area2D" groups=["enemy"]]
 rotation = 1.5708

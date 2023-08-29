@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b63xw7oispmi2" path="res://Assets/Player/Attacks/chain_01.ogg" id="5_b7qty"]
 [ext_resource type="Script" path="res://Scenes/Player/Attacks/ChainAttack.gd" id="6_1qukd"]
 [ext_resource type="AudioStream" uid="uid://bmwao5a7vnvto" path="res://Assets/Player/Attacks/chain_02.ogg" id="6_jrhp8"]
+[ext_resource type="PackedScene" uid="uid://cukxdea1oftbw" path="res://Resources/Audio/Music/spooky_background_music.tscn" id="10_rqqr0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybqe4"]
 radius = 9.0
@@ -494,8 +495,11 @@ stream_1/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 21
 script = ExtResource("1_1ssqm")
+
+
+[node name="SpookyBackgroundMusic" parent="." instance=ExtResource("10_rqqr0")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_h613c")]
 max_health = 3.0
@@ -507,6 +511,7 @@ acceleration = 25.0
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ndsnw")]
 health_component = NodePath("../HealthComponent")
+
 
 [node name="SpecialCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ybqe4")
@@ -567,6 +572,8 @@ rotation = 3.92699
 
 [node name="ChainAttack" type="Area2D" parent="ChainAttackAnchor" groups=["player_attacks"]]
 scale = Vector2(1.5, 1.5)
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("6_1qukd")
 
 [node name="ChainSprite" type="Sprite2D" parent="ChainAttackAnchor/ChainAttack"]
@@ -585,6 +592,15 @@ stream = SubResource("AudioStreamRandomizer_a80cy")
 volume_db = -16.0
 pitch_scale = 0.75
 
+
+[node name="PlayerArea2D" type="Area2D" parent="." groups=["player"]]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+shape = SubResource("CapsuleShape2D_ybqe4")
+
 [connection signal="body_entered" from="Area2D" to="." method="on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="on_body_exited"]
+
 [connection signal="animation_finished" from="PlayerSprite/AnimationPlayer" to="." method="_on_player_attack_animation_finished"]

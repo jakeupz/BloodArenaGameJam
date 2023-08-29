@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Global.gd"
+SpookyBackgroundMusic="*res://Resources/Audio/Music/spooky_background_music.tscn"
 
 [display]
 
@@ -73,6 +74,8 @@ pause={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
+2d_physics/layer_4="chain_attack"
+2d_physics/layer_5="blood_drop"
 
 [rendering]
 
