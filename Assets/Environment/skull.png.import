@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlbwghgn52cgq"
-path="res://.godot/imported/placeholderbat.png-b6a809e7c76414291b14b3e06b01c904.ctex"
+uid="uid://bwbcmsm1awlgf"
+path="res://.godot/imported/skull.png-f7e092b6f956f687b234c8a56e011bd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemies/placeholderbat.png"
-dest_files=["res://.godot/imported/placeholderbat.png-b6a809e7c76414291b14b3e06b01c904.ctex"]
+source_file="res://Assets/Environment/skull.png"
+dest_files=["res://.godot/imported/skull.png-f7e092b6f956f687b234c8a56e011bd0.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bpv6h0idmbwq8"]
+[gd_scene load_steps=26 format=3 uid="uid://bpv6h0idmbwq8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_1ssqm"]
 [ext_resource type="Texture2D" uid="uid://dyw8rmwwbj67b" path="res://Assets/Player/PlayerLegsSpritesheet.png" id="2_8au3m"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b63xw7oispmi2" path="res://Assets/Player/Attacks/chain_01.ogg" id="5_b7qty"]
 [ext_resource type="Script" path="res://Scenes/Player/Attacks/ChainAttack.gd" id="6_1qukd"]
 [ext_resource type="AudioStream" uid="uid://bmwao5a7vnvto" path="res://Assets/Player/Attacks/chain_02.ogg" id="6_jrhp8"]
+[ext_resource type="PackedScene" uid="uid://cukxdea1oftbw" path="res://Resources/Audio/Music/spooky_background_music.tscn" id="10_rqqr0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybqe4"]
 radius = 9.0
@@ -491,8 +492,10 @@ stream_1/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 21
 script = ExtResource("1_1ssqm")
+
+[node name="SpookyBackgroundMusic" parent="." instance=ExtResource("10_rqqr0")]
 
 [node name="SpecialCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ybqe4")
@@ -521,7 +524,7 @@ method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_ch6or")
 }
-blend_times = [&"unused_idle", &"unused_idle", 0.25, &"unused_idle", &"unused_run", 0.25]
+blend_times = [&"unused_idle", &"unused_run", 0.25, &"unused_idle", &"unused_idle", 0.25]
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
@@ -550,6 +553,8 @@ rotation = 3.92699
 
 [node name="ChainAttack" type="Area2D" parent="ChainAttackAnchor" groups=["player_attacks"]]
 scale = Vector2(1.5, 1.5)
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("6_1qukd")
 
 [node name="ChainSprite" type="Sprite2D" parent="ChainAttackAnchor/ChainAttack"]
@@ -569,6 +574,8 @@ volume_db = -16.0
 pitch_scale = 0.75
 
 [node name="PlayerArea2D" type="Area2D" parent="." groups=["player"]]
+collision_layer = 2
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
 shape = SubResource("CapsuleShape2D_ybqe4")

@@ -9,8 +9,3 @@ func play_footstep():
 
 	#end play_footstep
 
-
-
-
-func _on_finished():
-	pass # Replace with function body.
