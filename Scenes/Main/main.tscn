@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2snl8j1ugwj8"]
+[gd_scene load_steps=11 format=3 uid="uid://2snl8j1ugwj8"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_81fvf"]
 [ext_resource type="PackedScene" uid="uid://dngikja1ja7ly" path="res://Scenes/UI/vignette.tscn" id="1_jxcnx"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://o53byxsxakiu" path="res://Scenes/Enemies/Bat.tscn" id="4_jotpb"]
 [ext_resource type="PackedScene" uid="uid://dcq2q4p4eqyra" path="res://Scenes/Main/test.tscn" id="6_w7jxs"]
 [ext_resource type="PackedScene" uid="uid://ypn77dpf6tqw" path="res://Scenes/UI/UI.tscn" id="9_4ncx8"]
+
 [node name="Main" type="Node"]
 script = ExtResource("1_81fvf")
 end_screen_scene = ExtResource("2_giunm")
@@ -61,10 +62,10 @@ offset_left = 882.0
 offset_top = 296.0
 offset_right = 882.0
 offset_bottom = 296.0
-theme_override_fonts/normal_font = ExtResource("9_k8k7y")
 theme_override_font_sizes/normal_font_size = 58
 text = "NO ESCAPE
 "
+shortcut_keys_enabled = false
 
 [node name="test" parent="." instance=ExtResource("6_w7jxs")]
 position = Vector2(1568, 958)
