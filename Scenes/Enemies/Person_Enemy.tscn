@@ -15,6 +15,9 @@ radius = 12.0
 
 [node name="PersonEnemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 2
+motion_mode = 1
 script = ExtResource("1_6pbpq")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_1qset")]
@@ -41,6 +44,8 @@ texture = ExtResource("1_nlnx4")
 offset = Vector2(0, -2)
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
 
 [node name="HurtboxCollision" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_mb1k3")

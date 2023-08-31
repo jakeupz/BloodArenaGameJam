@@ -19,6 +19,7 @@ func _ready():
 
 
 func _process(_delta):
+	velocity_component.rotate_to_player()
 	velocity_component.accelerate_to_player()
 	velocity_component.move(self)
 
@@ -52,7 +53,6 @@ func _on_hurtbox_area_entered(area):
 			var death_sfx = bat_death_sound.instantiate()
 			death_sfx.position = position
 			get_parent().add_child(death_sfx)
-			print("I started in Person_Enemy at before check_death")
 			$HealthComponent.check_death()
 			#end if
 	#end _on_area_entered
