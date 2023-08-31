@@ -6,17 +6,13 @@ extends Node
 var velocity = Vector2.ZERO
 var angle_to_player = Vector2.ZERO
 
-var player
-
-func _ready():
-	player = get_tree().get_first_node_in_group("player")
-
 # This will allow the character to check for the player position in a straight line
 func accelerate_to_player():
 	var owner_node2d = owner as Node2D
 	if owner_node2d == null:
 		return
 		
+	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
 		return
 	
@@ -40,9 +36,3 @@ func move(character_body: CharacterBody2D):
 	character_body.velocity = velocity
 	character_body.move_and_slide()
 	velocity = character_body.velocity
-
-
-func rotate_to_player():
-	if player == null:
-		return
-	owner.look_at(player.global_position)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcq2q4p4eqyra"]
+[gd_scene load_steps=6 format=3 uid="uid://dcq2q4p4eqyra"]
 
 [ext_resource type="Script" path="res://Scenes/Main/test.gd" id="1_00wq2"]
 [ext_resource type="Texture2D" uid="uid://b30qwgl4dpaki" path="res://icon.svg" id="1_tlbip"]
-[ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_q1ktq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_041t3"]
 radius = 60.1664
@@ -13,20 +12,13 @@ radius = 457.262
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cgvq"]
 radius = 1453.43
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0q6ai"]
-radius = 60.0925
-
 [node name="test" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent")]
 scale = Vector2(0.3, 0.3)
-collision_layer = 0
-collision_mask = 3
+collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_00wq2")
 navigation_agent = NodePath("Navigation/NavigationAgent2D")
-
-[node name="HealthComponent" parent="." instance=ExtResource("2_q1ktq")]
-max_health = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.552941, 0.988235, 1)
@@ -39,20 +31,17 @@ shape = SubResource("CircleShape2D_041t3")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
 avoidance_enabled = true
-avoidance_layers = 0
-avoidance_mask = 128
 debug_enabled = true
 
 [node name="RecalculateTimer" type="Timer" parent="Navigation"]
-wait_time = 0.073
+wait_time = 0.1
 autostart = true
 
 [node name="Node2D" type="Node2D" parent="."]
-visible = false
 
 [node name="AgroRange" type="Area2D" parent="Node2D"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AgroRange"]
 shape = SubResource("CircleShape2D_ip8d5")
@@ -60,37 +49,13 @@ debug_color = Color(0.466667, 0.592157, 0, 0.419608)
 
 [node name="DeAggroRange" type="Area2D" parent="Node2D" groups=["lol"]]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/DeAggroRange"]
 shape = SubResource("CircleShape2D_5cgvq")
 debug_color = Color(0.905882, 0.211765, 0.556863, 0.419608)
 
-[node name="HealthLabel" type="Label" parent="."]
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.171
-anchor_right = 0.5
-anchor_bottom = 0.171
-offset_left = 56.6667
-offset_top = 43.3333
-offset_right = 78.6667
-offset_bottom = 69.3333
-grow_horizontal = 2
-scale = Vector2(1.45, 1.45)
-text = "HP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 8
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_0q6ai")
-
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
 [connection signal="area_entered" from="Node2D/AgroRange" to="." method="_on_agro_range_area_entered"]
 [connection signal="area_exited" from="Node2D/DeAggroRange" to="." method="_on_de_aggro_range_area_exited"]
-[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

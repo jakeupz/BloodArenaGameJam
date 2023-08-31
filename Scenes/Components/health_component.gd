@@ -28,5 +28,6 @@ func get_health_percent():
 # This will emit the died signal in death component
 func check_death():
 	if current_health == 0:
+		print("I emitted 'died' in health component" )
 		died.emit()
 		owner.queue_free()

@@ -1,22 +1,14 @@
-
 [gd_scene load_steps=30 format=3 uid="uid://bpv6h0idmbwq8"]
-
-[gd_scene load_steps=28 format=3 uid="uid://bpv6h0idmbwq8"]
-
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_1ssqm"]
 [ext_resource type="Texture2D" uid="uid://dyw8rmwwbj67b" path="res://Assets/Player/PlayerLegsSpritesheet.png" id="2_8au3m"]
-[ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_h613c"]
 [ext_resource type="Texture2D" uid="uid://bx1kh8ckmiape" path="res://Assets/Player/PlayerSpritesheet.png" id="2_y6rxi"]
-[ext_resource type="PackedScene" uid="uid://wud6ff8hcvhk" path="res://Scenes/Components/velocity_component.tscn" id="3_71wy5"]
 [ext_resource type="Texture2D" uid="uid://bcb2vwmnxu17x" path="res://Assets/Player/Light.png" id="3_ajb3v"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerLegsSprite.gd" id="3_bbyao"]
-[ext_resource type="PackedScene" uid="uid://u1m57c2tfe30" path="res://Scenes/Components/death_component.tscn" id="4_ndsnw"]
 [ext_resource type="Texture2D" uid="uid://dsbjo4n82s2mn" path="res://Assets/Player/Attacks/Chain Spritesheet.png" id="4_r46l7"]
 [ext_resource type="AudioStream" uid="uid://b63xw7oispmi2" path="res://Assets/Player/Attacks/chain_01.ogg" id="5_b7qty"]
 [ext_resource type="Script" path="res://Scenes/Player/Attacks/ChainAttack.gd" id="6_1qukd"]
 [ext_resource type="AudioStream" uid="uid://bmwao5a7vnvto" path="res://Assets/Player/Attacks/chain_02.ogg" id="6_jrhp8"]
-[ext_resource type="PackedScene" uid="uid://cukxdea1oftbw" path="res://Resources/Audio/Music/spooky_background_music.tscn" id="10_rqqr0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybqe4"]
 radius = 9.0
@@ -520,33 +512,15 @@ stream_1/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 21
+collision_mask = 7
 script = ExtResource("1_1ssqm")
-
-
-[node name="SpookyBackgroundMusic" parent="." instance=ExtResource("10_rqqr0")]
-
-[node name="HealthComponent" parent="." instance=ExtResource("2_h613c")]
-max_health = 3.0
-current_health = 3.0
-
-[node name="VelocityComponent" parent="." instance=ExtResource("3_71wy5")]
-max_speed = 200
-acceleration = 25.0
-
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ndsnw")]
-health_component = NodePath("../HealthComponent")
-
 
 [node name="SpecialCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ybqe4")
 
-[node name="DamageIntervalTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
-[node name="Area2D" type="Area2D" parent="." groups=["bruh", "player"]]
-collision_layer = 3
+[node name="Area2D" type="Area2D" parent="." groups=["bruh"]]
+collision_layer = 2
+collision_mask = 0
 
 [node name="AggroActivator" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_ybqe4")
@@ -602,8 +576,6 @@ rotation = 3.92699
 
 [node name="ChainAttack" type="Area2D" parent="ChainAttackAnchor" groups=["player_attacks"]]
 scale = Vector2(1.5, 1.5)
-collision_layer = 8
-collision_mask = 4
 script = ExtResource("6_1qukd")
 
 [node name="ChainSprite" type="Sprite2D" parent="ChainAttackAnchor/ChainAttack"]
@@ -623,16 +595,9 @@ stream = SubResource("AudioStreamRandomizer_a80cy")
 volume_db = -16.0
 pitch_scale = 0.75
 
-
 [node name="PlayerArea2D" type="Area2D" parent="." groups=["player"]]
-collision_layer = 2
-collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
 shape = SubResource("CapsuleShape2D_ybqe4")
-
-
-[connection signal="body_entered" from="Area2D" to="." method="on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="on_body_exited"]
 
 [connection signal="animation_finished" from="PlayerSprite/AnimationTree" to="." method="_on_player_animation_finished"]
