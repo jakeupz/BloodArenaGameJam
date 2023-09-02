@@ -9,13 +9,11 @@ var number_colliding_bodies = 0
 signal health_set_on_ui
 
 func _ready():
-	# Play the appropriate idle animation that loops automatically to start
-	updateAnimation()
-	#end _ready
 	health_component.health_changed.connect(on_health_changed)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
 	Global.emit_set_player_health(health_component.max_health)
-	
+	#end _ready
+
 func _process(_delta):
 
 	# Movement code
@@ -33,25 +31,17 @@ func _process(_delta):
 	# Attack code
 	# Check for player attack input
 	if Input.is_action_just_pressed("primary_fire") and !Global.currently_attacking:
-		
 		# Attack initiated, set global var, play anim & sfx
 		Global.currently_attacking = true
-		$PlayerSprite/AnimationPlayer.play("chain_swing")
+		# Play the chain attacak animation and sfx
+		$PlayerSprite/AnimationTree["parameters/playback"].travel("chain_swing")
 		$ChainAttackAnchor/ChainSFX.play()
 		#end if
 	# Attack code end
 	
-	# Run the animation function
-	updateAnimation()
 	
 	#end _process
 
-func updateAnimation():
-	# If no active animation is playing, play the looping idle animation.
-	if ( not $PlayerSprite/AnimationPlayer.is_playing() ) and velocity.length() == 0:
-		$PlayerSprite/AnimationPlayer.play("idle")
-		#end if
-	#end updateAnimation
 
 
 func get_movement_vector():

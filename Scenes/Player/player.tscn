@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bpv6h0idmbwq8"]
+[gd_scene load_steps=34 format=3 uid="uid://bpv6h0idmbwq8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_1ssqm"]
 [ext_resource type="Texture2D" uid="uid://dyw8rmwwbj67b" path="res://Assets/Player/PlayerLegsSpritesheet.png" id="2_8au3m"]
@@ -481,8 +481,31 @@ _data = {
 "unused_sword_outward_slash": SubResource("Animation_kdv6a")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lw2hq"]
+animation = &"chain_swing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o72fh"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ae44v"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7yijc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ie5ie"]
+states/End/position = Vector2(818, 146)
+states/Start/position = Vector2(277, 146)
+states/chain_swing/node = SubResource("AnimationNodeAnimation_lw2hq")
+states/chain_swing/position = Vector2(568, 146)
+states/idle/node = SubResource("AnimationNodeAnimation_o72fh")
+states/idle/position = Vector2(412, 146)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ae44v"), "chain_swing", "idle", SubResource("AnimationNodeStateMachineTransition_7yijc")]
+graph_offset = Vector2(4, 47)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bcty"]
-size = Vector2(23.6812, 6.42088)
+size = Vector2(24.1865, 6.37208)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a80cy"]
 streams_count = 2
@@ -498,7 +521,6 @@ collision_layer = 2
 collision_mask = 21
 script = ExtResource("1_1ssqm")
 
-
 [node name="SpookyBackgroundMusic" parent="." instance=ExtResource("10_rqqr0")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_h613c")]
@@ -512,7 +534,6 @@ acceleration = 25.0
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ndsnw")]
 health_component = NodePath("../HealthComponent")
 
-
 [node name="SpecialCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ybqe4")
 
@@ -522,6 +543,7 @@ one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["bruh", "player"]]
 collision_layer = 3
+collision_mask = 5
 
 [node name="AggroActivator" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_ybqe4")
@@ -543,7 +565,7 @@ method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_ch6or")
 }
-blend_times = [&"unused_idle", &"unused_run", 0.25, &"unused_idle", &"unused_idle", 0.25]
+blend_times = [&"unused_idle", &"unused_idle", 0.25, &"unused_idle", &"unused_run", 0.25]
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
@@ -552,12 +574,17 @@ texture = ExtResource("2_y6rxi")
 offset = Vector2(0, 2)
 hframes = 30
 vframes = 3
-frame = 60
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 libraries = {
 "": SubResource("AnimationLibrary_ae6dg")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="PlayerSprite"]
+tree_root = SubResource("AnimationNodeStateMachine_ie5ie")
+anim_player = NodePath("../AnimationPlayer")
+active = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -582,16 +609,16 @@ offset = Vector2(0, -24)
 hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChainAttackAnchor/ChainAttack"]
-position = Vector2(9.9567, -5.35837)
-rotation = -0.252383
+position = Vector2(9.46933, -5.58922)
+rotation = -0.261799
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_8bcty")
+disabled = true
 
 [node name="ChainSFX" type="AudioStreamPlayer" parent="ChainAttackAnchor"]
 stream = SubResource("AudioStreamRandomizer_a80cy")
 volume_db = -16.0
 pitch_scale = 0.75
-
 
 [node name="PlayerArea2D" type="Area2D" parent="." groups=["player"]]
 collision_layer = 2
@@ -602,5 +629,4 @@ shape = SubResource("CapsuleShape2D_ybqe4")
 
 [connection signal="body_entered" from="Area2D" to="." method="on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="on_body_exited"]
-
-[connection signal="animation_finished" from="PlayerSprite/AnimationPlayer" to="." method="_on_player_attack_animation_finished"]
+[connection signal="animation_finished" from="PlayerSprite/AnimationTree" to="." method="_on_player_attack_animation_finished"]

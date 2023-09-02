@@ -3,7 +3,7 @@ extends Node
 const SPAWN_RADIUS = 375
 
 @export var bat_enemy_scene: PackedScene
-@export var person_enemy_scene: PackedScene
+@export var vampire_enemy_scene: PackedScene
 
 @onready var timer = $Timer
 
@@ -51,7 +51,7 @@ func on_timer_timeout():
 		1:
 			enemy = bat_enemy_scene.instantiate()
 		2:
-			enemy = person_enemy_scene.instantiate()
+			enemy = vampire_enemy_scene.instantiate()
 			
 	
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer") 

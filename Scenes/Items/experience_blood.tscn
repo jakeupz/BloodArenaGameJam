@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://fygpokdod3lj"]
 
-[ext_resource type="Texture2D" uid="uid://1gqnmr55uub6" path="res://Scenes/Items/bloodspot.png" id="1_dk8xg"]
 [ext_resource type="Script" path="res://Scenes/Items/experience_blood.gd" id="1_lsciq"]
+[ext_resource type="Texture2D" uid="uid://btxn3s8ea527s" path="res://Scenes/Items/BloodVial.png" id="2_e3mdb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bne7g"]
 radius = 30.0
@@ -17,4 +17,4 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_bne7g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_dk8xg")
+texture = ExtResource("2_e3mdb")
