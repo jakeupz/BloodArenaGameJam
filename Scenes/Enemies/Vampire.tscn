@@ -79,7 +79,7 @@ max_health = 2.0
 current_health = 2.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_oefln")]
-max_speed = 80
+max_speed = 60
 
 [node name="BloodDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_n7a64")]
 blood_drop_scene = ExtResource("5_h75ro")

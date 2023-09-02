@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://o53byxsxakiu"]
+[gd_scene load_steps=12 format=3 uid="uid://o53byxsxakiu"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Bat.gd" id="1_vb43c"]
 [ext_resource type="Texture2D" uid="uid://uy4b6n4711lq" path="res://Assets/Enemies/BatSpritesheet.png" id="2_0kyki"]
+[ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_8vvfr"]
+[ext_resource type="PackedScene" uid="uid://wud6ff8hcvhk" path="res://Scenes/Components/velocity_component.tscn" id="2_cnmn2"]
 [ext_resource type="AudioStream" uid="uid://e0yda8kxnywv" path="res://Resources/Audio/BatHurtRandomizer.tres" id="3_4yjko"]
+[ext_resource type="PackedScene" uid="uid://dv7br2yxnooh1" path="res://Scenes/Components/blood_drop_component.tscn" id="4_3lkyu"]
+[ext_resource type="PackedScene" uid="uid://u1m57c2tfe30" path="res://Scenes/Components/death_component.tscn" id="5_s5a48"]
+[ext_resource type="PackedScene" uid="uid://fygpokdod3lj" path="res://Scenes/Items/experience_blood.tscn" id="5_vil8o"]
 
 [sub_resource type="Animation" id="Animation_vnqk3"]
 length = 0.001
@@ -47,7 +52,21 @@ collision_layer = 4
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_vb43c")
-max_health = 2
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_8vvfr")]
+max_health = 2.0
+current_health = 2.0
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_cnmn2")]
+max_speed = 80
+
+[node name="BloodDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_3lkyu")]
+blood_drop_scene = ExtResource("5_vil8o")
+health_component = NodePath("../HealthComponent")
+spawn_amount = 1
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_s5a48")]
+health_component = NodePath("../HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_0kyki")
