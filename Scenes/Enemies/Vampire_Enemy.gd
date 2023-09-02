@@ -20,6 +20,8 @@ func _ready():
 
 
 func _process(_delta):
+	# Movement code
+	velocity_component.rotate_to_player()
 	velocity_component.accelerate_to_player()
 	velocity_component.move(self)
 
@@ -28,12 +30,7 @@ func _process(_delta):
 	$HealthLabel.text = str($HealthComponent.current_health)
 	# Keep the health label upright
 	$HealthLabel.rotation = -rotation
-	
-	# Look at the player's position
-	# Main > Enemy Manager > Spawned Enemy
-	# Enemy Manager and Player are sibling nodes
-	look_at(get_parent().get_parent().get_node("Player").position)
-	
+
 	
 	# Set walking animation speed based on velocity
 	$Sprite2D/AnimationPlayer.speed_scale = velocity.length() / 100

@@ -17,7 +17,7 @@ func damage(damage_amount: float):
 	# A "hit taken" signal would happen but nothings implemented right now
 	health_changed.emit()
 	#Calls at the end of the current frame
-#	Callable(check_death).call_deferred()
+
 
 # If we need a health bar
 func get_health_percent():
