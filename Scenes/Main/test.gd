@@ -16,7 +16,7 @@ func _ready():
 	recalc_path()
 	
 	
-func _process(delta):
+func _process(_delta):
 	$HealthLabel.text = str($HealthComponent.current_health)
 	# Keep the health label upright
 	$HealthLabel.rotation = -rotation	

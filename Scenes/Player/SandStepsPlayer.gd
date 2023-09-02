@@ -1,11 +1,14 @@
-extends AudioStreamPlayer
+extends AudioStreamPlayer2D
 
 
-func play_footstep():
+# Play a footstep when I'm spawned in
+func _ready():
+	play()
+	#end ready
 
-	# 3 different players to stack the audio on top of each other
-	# otherwise .play() will cut off any current audio
 
 
-	#end play_footstep
-
+# When the sound is done playing, free the audio stream player from memory
+func _on_finished():
+	queue_free()
+	#end _on_finished

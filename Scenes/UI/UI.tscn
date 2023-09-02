@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ypn77dpf6tqw"]
 
 [ext_resource type="Script" path="res://Scenes/UI/UI.gd" id="1_vnchp"]
-[ext_resource type="Texture2D" uid="uid://1gqnmr55uub6" path="res://Scenes/Items/bloodspot.png" id="2_nav60"]
+[ext_resource type="Texture2D" uid="uid://btxn3s8ea527s" path="res://Scenes/Items/BloodVial.png" id="2_x50ta"]
 [ext_resource type="Texture2D" uid="uid://c5mw313yvqlb" path="res://Scenes/UI/heart.png" id="3_uwxiv"]
 
 [node name="UI" type="CanvasLayer"]
@@ -23,7 +23,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/BloodCounter"]
 layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource("2_nav60")
+texture = ExtResource("2_x50ta")
 
 [node name="BloodCounter" type="Label" parent="MarginContainer/VBoxContainer/BloodCounter"]
 unique_name_in_owner = true

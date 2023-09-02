@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://d1b7yka06cyo" path="res://Resources/Audio/Music/spooky_bg_noise.wav" id="1_7r35x"]
 [ext_resource type="Script" path="res://Resources/Audio/Music/spooky_background_music.gd" id="2_oom07"]
 
-[node name="SpookyBackgroundMusic" type="AudioStreamPlayer2D"]
+[node name="SpookyBackgroundMusic" type="AudioStreamPlayer"]
 stream = ExtResource("1_7r35x")
 volume_db = 2.56
 autoplay = true
