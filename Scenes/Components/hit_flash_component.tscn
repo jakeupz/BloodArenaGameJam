@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce801sgwsca1h"]
+
+[ext_resource type="Script" path="res://Scenes/Components/hit_flash_component.gd" id="1_5gjcc"]
+[ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="2_ju44n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5h4pr"]
+resource_local_to_scene = true
+shader = ExtResource("2_ju44n")
+shader_parameter/lerp_percent = null
+
+[node name="HitFlashComponent" type="Node"]
+script = ExtResource("1_5gjcc")
+hit_flash_material = SubResource("ShaderMaterial_5h4pr")

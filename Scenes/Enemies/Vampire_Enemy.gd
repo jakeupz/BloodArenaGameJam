@@ -5,7 +5,7 @@ extends CharacterBody2D
 # Movement managed through this component
 @onready var velocity_component = $VelocityComponent
 
-var bat_death_sound = preload("res://Scenes/Enemies/BatDeathSFX.tscn")
+var vampire_death_sound = preload("res://Scenes/Enemies/VampireDeathSFX.tscn")
 var player = preload ("res://Scenes/Player/player.tscn")
 var sand_steps_player = preload("res://Scenes/Player/SandStepsPlayer.tscn")
 
@@ -42,12 +42,13 @@ func _on_hurtbox_area_entered(area):
 		# If the area that collided is Player/ChainAttackAnchor/ChainAttack
 		if area.name == "ChainAttack":
 			$HealthComponent.damage(area.attack_damage)
+			$VampireDamageRandomPlayer2DComponent.play_random()
 				#end if
 			#end if
 
 		# If bat is out of health, kill it / free memory
 		if $HealthComponent.current_health <= 0:
-			var death_sfx = bat_death_sound.instantiate()
+			var death_sfx = vampire_death_sound.instantiate()
 			death_sfx.position = position
 			get_parent().add_child(death_sfx)
 			$HealthComponent.check_death()

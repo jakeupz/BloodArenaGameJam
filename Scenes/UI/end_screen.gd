@@ -4,11 +4,11 @@ func _ready():
 	get_tree().paused = true
 	%RestartButton.pressed.connect(on_restart_button_pressed)
 	%QuitButton.pressed.connect(on_quit_button_pressed)
+	$DeathRandomStreamPlayer2DComponent.play_random()
 	
 func set_defeat(number: float):
 	%EndLabel.text = "This evening's show \nis done"
 	%ScoreLabel.text = "Score: " + str(number)
-#	play_jingle(true)
 	
 #func play_jingle(defeat: bool = false):
 #	if defeat:
@@ -22,5 +22,5 @@ func on_restart_button_pressed():
 
 
 func on_quit_button_pressed():
-	get_tree().quit()
 	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")

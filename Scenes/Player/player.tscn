@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bpv6h0idmbwq8"]
+[gd_scene load_steps=43 format=3 uid="uid://bpv6h0idmbwq8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_1ssqm"]
 [ext_resource type="Texture2D" uid="uid://dyw8rmwwbj67b" path="res://Assets/Player/PlayerLegsSpritesheet.png" id="2_8au3m"]
@@ -10,9 +10,22 @@
 [ext_resource type="PackedScene" uid="uid://u1m57c2tfe30" path="res://Scenes/Components/death_component.tscn" id="4_ndsnw"]
 [ext_resource type="Texture2D" uid="uid://dsbjo4n82s2mn" path="res://Assets/Player/Attacks/Chain Spritesheet.png" id="4_r46l7"]
 [ext_resource type="AudioStream" uid="uid://b63xw7oispmi2" path="res://Assets/Player/Attacks/chain_01.ogg" id="5_b7qty"]
+[ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="5_y2tvw"]
 [ext_resource type="Script" path="res://Scenes/Player/Attacks/ChainAttack.gd" id="6_1qukd"]
 [ext_resource type="AudioStream" uid="uid://bmwao5a7vnvto" path="res://Assets/Player/Attacks/chain_02.ogg" id="6_jrhp8"]
+[ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="6_ktb3f"]
+[ext_resource type="PackedScene" uid="uid://bbcgucbi2vr16" path="res://Scenes/Components/random_stream_player_2d_component.tscn" id="8_brulh"]
+[ext_resource type="AudioStream" uid="uid://ckhm13nol8646" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt1.wav" id="9_h7ts0"]
+[ext_resource type="AudioStream" uid="uid://odhf3f0o8p6q" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt2.wav" id="10_fhx52"]
 [ext_resource type="PackedScene" uid="uid://cukxdea1oftbw" path="res://Resources/Audio/Music/spooky_background_music.tscn" id="10_rqqr0"]
+[ext_resource type="AudioStream" uid="uid://ch653sxlh8bwc" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt3.wav" id="11_2687e"]
+[ext_resource type="AudioStream" uid="uid://cggc6fna7uar2" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt4.wav" id="12_lcn3n"]
+[ext_resource type="AudioStream" uid="uid://cv8056x5n2sk0" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt5.wav" id="13_ugvs8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2ufk"]
+resource_local_to_scene = true
+shader = ExtResource("6_ktb3f")
+shader_parameter/lerp_percent = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybqe4"]
 radius = 9.0
@@ -531,14 +544,21 @@ current_health = 3.0
 max_speed = 200
 acceleration = 25.0
 
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_y2tvw")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../PlayerSprite")
+hit_flash_material = SubResource("ShaderMaterial_h2ufk")
+
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ndsnw")]
 health_component = NodePath("../HealthComponent")
+
+[node name="HurtRandomStreamPlayer2DComponent" parent="." instance=ExtResource("8_brulh")]
+streams = Array[AudioStream]([ExtResource("9_h7ts0"), ExtResource("10_fhx52"), ExtResource("11_2687e"), ExtResource("12_lcn3n"), ExtResource("13_ugvs8")])
 
 [node name="SpecialCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ybqe4")
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
-wait_time = 5.0
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["bruh", "player"]]
@@ -574,7 +594,7 @@ texture = ExtResource("2_y6rxi")
 offset = Vector2(0, 2)
 hframes = 30
 vframes = 3
-frame = 15
+frame = 16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 libraries = {
@@ -619,6 +639,7 @@ disabled = true
 stream = SubResource("AudioStreamRandomizer_a80cy")
 volume_db = -16.0
 pitch_scale = 0.75
+bus = &"SFX"
 
 [node name="PlayerArea2D" type="Area2D" parent="." groups=["player"]]
 collision_layer = 2

@@ -70,6 +70,7 @@ func check_deal_damage():
 		return
 #	print("Current player health: ", health_component.current_health)
 	health_component.damage(1)
+	$HurtRandomStreamPlayer2DComponent.play_random()
 	damage_interval_timer.start()
 #	print("Current player health: ", health_component.current_health)
 	if health_component.current_health == 0:
