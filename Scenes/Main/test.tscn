@@ -1,8 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcq2q4p4eqyra"]
+[gd_scene load_steps=11 format=3 uid="uid://dcq2q4p4eqyra"]
 
 [ext_resource type="Script" path="res://Scenes/Main/test.gd" id="1_00wq2"]
 [ext_resource type="Texture2D" uid="uid://b30qwgl4dpaki" path="res://icon.svg" id="1_tlbip"]
 [ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_q1ktq"]
+[ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="3_6265d"]
+[ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="4_ugfsi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2w1n"]
+resource_local_to_scene = true
+shader = ExtResource("4_ugfsi")
+shader_parameter/lerp_percent = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_041t3"]
 radius = 60.1664
@@ -27,6 +34,11 @@ navigation_agent = NodePath("Navigation/NavigationAgent2D")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_q1ktq")]
 max_health = 20.0
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_6265d")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_j2w1n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.552941, 0.988235, 1)

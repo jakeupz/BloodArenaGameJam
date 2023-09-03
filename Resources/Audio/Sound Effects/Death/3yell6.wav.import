@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgcx3rf5vfnhy"
+path="res://.godot/imported/3yell6.wav-c9518fc8153a0dd0245f1256656fab8d.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/Sound Effects/Death/3yell6.wav"
+dest_files=["res://.godot/imported/3yell6.wav-c9518fc8153a0dd0245f1256656fab8d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

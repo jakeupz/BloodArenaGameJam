@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://decg8q5vk7a0k"]
+
+[ext_resource type="AudioStream" uid="uid://cdcgdkj0bn0la" path="res://Resources/Audio/VampireDeathRandomizer.tres" id="1_nrxnm"]
+[ext_resource type="Script" path="res://Scenes/Enemies/VampireDeathSFX.gd" id="2_eo2jk"]
+
+[node name="VampireDeathSFX" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_nrxnm")
+volume_db = -5.0
+attenuation = 20.0
+max_polyphony = 4
+bus = &"SFX"
+script = ExtResource("2_eo2jk")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

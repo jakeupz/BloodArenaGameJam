@@ -43,3 +43,4 @@ disabled = true
 stream = SubResource("AudioStreamRandomizer_a80cy")
 volume_db = -16.0
 pitch_scale = 0.75
+bus = &"SFX"

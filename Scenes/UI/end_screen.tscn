@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://crn7631bng61f"]
+[gd_scene load_steps=9 format=3 uid="uid://crn7631bng61f"]
 
 [ext_resource type="Script" path="res://Scenes/UI/end_screen.gd" id="1_3wnom"]
+[ext_resource type="PackedScene" uid="uid://bbcgucbi2vr16" path="res://Scenes/Components/random_stream_player_2d_component.tscn" id="2_87eec"]
+[ext_resource type="AudioStream" uid="uid://bej4i025wik3p" path="res://Resources/Audio/Sound Effects/Death/3yell1.wav" id="3_kpg1t"]
+[ext_resource type="AudioStream" uid="uid://cnx510870mxfb" path="res://Resources/Audio/Sound Effects/Death/3yell2.wav" id="4_imbj5"]
+[ext_resource type="AudioStream" uid="uid://vb2uih8x844o" path="res://Resources/Audio/Sound Effects/Death/3yell3.wav" id="5_tv7uj"]
+[ext_resource type="AudioStream" uid="uid://c0rh1pat7tl67" path="res://Resources/Audio/Sound Effects/Death/3yell4.wav" id="6_30y6n"]
+[ext_resource type="AudioStream" uid="uid://cvleexo7s7y56" path="res://Resources/Audio/Sound Effects/Death/3yell5.wav" id="7_a5rrc"]
+[ext_resource type="AudioStream" uid="uid://dgcx3rf5vfnhy" path="res://Resources/Audio/Sound Effects/Death/3yell6.wav" id="8_o8psm"]
 
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
@@ -65,3 +72,6 @@ text = "Bring in another"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Retire"
+
+[node name="DeathRandomStreamPlayer2DComponent" parent="." instance=ExtResource("2_87eec")]
+streams = Array[AudioStream]([ExtResource("3_kpg1t"), ExtResource("4_imbj5"), ExtResource("5_tv7uj"), ExtResource("6_30y6n"), ExtResource("7_a5rrc"), ExtResource("8_o8psm")])

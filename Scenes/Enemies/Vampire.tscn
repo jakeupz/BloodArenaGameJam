@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgvppps0pkhxt"]
+[gd_scene load_steps=19 format=3 uid="uid://cgvppps0pkhxt"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Vampire_Enemy.gd" id="1_eau7t"]
 [ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_co632"]
@@ -6,7 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://dv7br2yxnooh1" path="res://Scenes/Components/blood_drop_component.tscn" id="4_n7a64"]
 [ext_resource type="PackedScene" uid="uid://fygpokdod3lj" path="res://Scenes/Items/experience_blood.tscn" id="5_h75ro"]
 [ext_resource type="PackedScene" uid="uid://u1m57c2tfe30" path="res://Scenes/Components/death_component.tscn" id="6_ha6tt"]
+[ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="6_qx5bu"]
+[ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="7_acj3a"]
 [ext_resource type="Texture2D" uid="uid://bubeaobbxvirw" path="res://Assets/Enemies/VampireSpritesheet.png" id="7_orebm"]
+[ext_resource type="AudioStream" uid="uid://1v3blvavgv46" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage1.wav" id="9_0look"]
+[ext_resource type="PackedScene" uid="uid://bbcgucbi2vr16" path="res://Scenes/Components/random_stream_player_2d_component.tscn" id="9_qpa2d"]
+[ext_resource type="AudioStream" uid="uid://dgv11txfjenbs" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage2.wav" id="10_eloa1"]
+[ext_resource type="AudioStream" uid="uid://cwsoe5kqel6po" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage3.wav" id="11_jvqwm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ginim"]
+resource_local_to_scene = true
+shader = ExtResource("7_acj3a")
+shader_parameter/lerp_percent = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_357t5"]
 radius = 16.5
@@ -70,7 +81,7 @@ _data = {
 [node name="VampireEnemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.75, 1.75)
 collision_layer = 4
-collision_mask = 2
+collision_mask = 3
 safe_margin = 1.0
 script = ExtResource("1_eau7t")
 
@@ -85,6 +96,14 @@ max_speed = 60
 blood_drop_scene = ExtResource("5_h75ro")
 health_component = NodePath("../HealthComponent")
 spawn_amount = 1
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_qx5bu")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_ginim")
+
+[node name="VampireDamageRandomPlayer2DComponent" parent="." instance=ExtResource("9_qpa2d")]
+streams = Array[AudioStream]([ExtResource("9_0look"), ExtResource("10_eloa1"), ExtResource("11_jvqwm")])
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_ha6tt")]
 health_component = NodePath("../HealthComponent")

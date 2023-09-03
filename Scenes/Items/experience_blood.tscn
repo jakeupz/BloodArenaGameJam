@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://fygpokdod3lj"]
+[gd_scene load_steps=5 format=3 uid="uid://fygpokdod3lj"]
 
 [ext_resource type="Script" path="res://Scenes/Items/experience_blood.gd" id="1_lsciq"]
 [ext_resource type="Texture2D" uid="uid://btxn3s8ea527s" path="res://Scenes/Items/BloodVial.png" id="2_e3mdb"]
+[ext_resource type="AudioStream" uid="uid://bdmq0x1nf1c2l" path="res://Resources/Audio/Sound Effects/Blood Drop Pickup.wav" id="3_mlurg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bne7g"]
 radius = 30.0
@@ -18,3 +19,8 @@ shape = SubResource("CircleShape2D_bne7g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_e3mdb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_mlurg")
+volume_db = 10.0
+bus = &"SFX"

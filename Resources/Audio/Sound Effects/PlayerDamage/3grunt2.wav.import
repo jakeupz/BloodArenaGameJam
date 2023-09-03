@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://odhf3f0o8p6q"
+path="res://.godot/imported/3grunt2.wav-cf3825f456004c9ee31c5d5c0113c3d8.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt2.wav"
+dest_files=["res://.godot/imported/3grunt2.wav-cf3825f456004c9ee31c5d5c0113c3d8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

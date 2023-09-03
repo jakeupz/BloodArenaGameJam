@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c80cvffeosj4t"]
+[gd_scene load_steps=13 format=3 uid="uid://c80cvffeosj4t"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Person_Enemy.gd" id="1_6pbpq"]
 [ext_resource type="Texture2D" uid="uid://doccw1swn7ja6" path="res://Assets/Player/PlaceholderPlayer.png" id="1_nlnx4"]
@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://wud6ff8hcvhk" path="res://Scenes/Components/velocity_component.tscn" id="3_fc2w3"]
 [ext_resource type="PackedScene" uid="uid://dv7br2yxnooh1" path="res://Scenes/Components/blood_drop_component.tscn" id="4_11m1p"]
 [ext_resource type="PackedScene" uid="uid://fygpokdod3lj" path="res://Scenes/Items/experience_blood.tscn" id="5_5oevn"]
+[ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="6_ihlh0"]
+[ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="7_yg7ps"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1imf"]
+resource_local_to_scene = true
+shader = ExtResource("7_yg7ps")
+shader_parameter/lerp_percent = null
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_et18u"]
 
@@ -32,6 +39,11 @@ acceleration = 20.0
 blood_drop_scene = ExtResource("5_5oevn")
 health_component = NodePath("../HealthComponent")
 spawn_amount = 1
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ihlh0")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_k1imf")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ostv2")]
 health_component = NodePath("../HealthComponent")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgv11txfjenbs"
+path="res://.godot/imported/VampireDamage2.wav-19534d243e5a844d4149df76a7b8b3ab.sample"
+
+[deps]
+
+source_file="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage2.wav"
+dest_files=["res://.godot/imported/VampireDamage2.wav-19534d243e5a844d4149df76a7b8b3ab.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

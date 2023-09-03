@@ -23,6 +23,8 @@ func tween_collect(percent: float, start_position: Vector2):
 
 func collect():
 	Global.emit_experience_blood_collected(1)
+	$AudioStreamPlayer2D.play()
+	await $AudioStreamPlayer2D.finished
 	queue_free()
 
 func disable_collision():
