@@ -72,6 +72,14 @@ size_flags_horizontal = 4
 text = "BLOODSPORT"
 horizontal_alignment = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "color_fade"
+libraries = {
+"": SubResource("AnimationLibrary_ix48w")
+}
+
+[node name="Vignette_MainMenu" parent="." instance=ExtResource("2_s3n4d")]
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,6 +88,7 @@ offset_top = -19.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(180, 140)
@@ -122,11 +131,3 @@ text = "Credits"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "color_fade"
-libraries = {
-"": SubResource("AnimationLibrary_ix48w")
-}
-
-[node name="Vignette_MainMenu" parent="." instance=ExtResource("2_s3n4d")]
