@@ -1,23 +1,83 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwiqiykx656bf"]
+[gd_scene load_steps=8 format=3 uid="uid://bwiqiykx656bf"]
 
 [ext_resource type="Script" path="res://Scenes/UI/main_menu.gd" id="1_y7cw8"]
+[ext_resource type="Texture2D" uid="uid://dg4s1g1rabahc" path="res://Assets/UI/VampireFace.png" id="2_3fvav"]
+[ext_resource type="PackedScene" uid="uid://dpykjwet71xqp" path="res://Scenes/UI/vignette_main_menu.tscn" id="2_s3n4d"]
+
+[sub_resource type="Animation" id="Animation_v67c5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r7hfm"]
+resource_name = "color_fade"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4gnw6"]
+resource_name = "face"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ix48w"]
+_data = {
+"RESET": SubResource("Animation_v67c5"),
+"color_fade": SubResource("Animation_r7hfm"),
+"face": SubResource("Animation_4gnw6")
+}
 
 [node name="MainMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_y7cw8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.156863)
+color = Color(0, 0, 0, 1)
+
+[node name="VampireFace" type="Sprite2D" parent="."]
+position = Vector2(328, 206)
+scale = Vector2(4.95833, 4.95833)
+texture = ExtResource("2_3fvav")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 245.0
+offset_top = 30.0
+offset_right = 396.0
+offset_bottom = 56.0
+size_flags_horizontal = 4
+text = "BLOODSPORT"
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -19.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -25,7 +85,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(180, 140)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
@@ -35,12 +95,6 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="PauseLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Main Menu"
-horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -68,3 +122,11 @@ text = "Credits"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "color_fade"
+libraries = {
+"": SubResource("AnimationLibrary_ix48w")
+}
+
+[node name="Vignette_MainMenu" parent="." instance=ExtResource("2_s3n4d")]

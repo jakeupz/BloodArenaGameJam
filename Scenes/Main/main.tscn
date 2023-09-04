@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=15 format=3 uid="uid://2snl8j1ugwj8"]
-
+[gd_scene load_steps=15 format=3 uid="uid://duwabc3nbrg3u"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_81fvf"]
 [ext_resource type="PackedScene" uid="uid://dngikja1ja7ly" path="res://Scenes/UI/vignette.tscn" id="1_jxcnx"]
@@ -12,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cgvppps0pkhxt" path="res://Scenes/Enemies/Vampire.tscn" id="6_0vrj7"]
 [ext_resource type="PackedScene" uid="uid://dcq2q4p4eqyra" path="res://Scenes/Main/test.tscn" id="6_w7jxs"]
 [ext_resource type="PackedScene" uid="uid://ypn77dpf6tqw" path="res://Scenes/UI/UI.tscn" id="9_4ncx8"]
+[ext_resource type="Texture2D" uid="uid://br25oo7afmb2h" path="res://Assets/Environment/blood writing.png" id="11_nwmxr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1trwc"]
 light_mode = 2
@@ -99,6 +98,9 @@ position = Vector2(283, 160)
 position = Vector2(530, 147)
 scale = Vector2(0.5, 0.5)
 
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 0.784314)
+
+[node name="BloodWriting" type="Sprite2D" parent="."]
+position = Vector2(1566, 803)
+texture = ExtResource("11_nwmxr")
