@@ -9,11 +9,11 @@ var hit_flash_tween: Tween
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health_component.health_changed.connect(on_health_changed)
-	sprite.material = hit_flash_material
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func on_health_changed():
+	sprite.material = hit_flash_material
 	if hit_flash_tween != null && hit_flash_tween.is_valid():
 		hit_flash_tween.kill()
 		

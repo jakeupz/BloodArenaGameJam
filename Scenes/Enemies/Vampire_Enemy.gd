@@ -43,6 +43,7 @@ func _on_hurtbox_area_entered(area):
 		if area.name == "ChainAttack":
 			$HealthComponent.damage(area.attack_damage)
 			$VampireDamageRandomPlayer2DComponent.play_random()
+			velocity_component.knockback()
 				#end if
 			#end if
 

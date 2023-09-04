@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://o53byxsxakiu"]
+[gd_scene load_steps=16 format=3 uid="uid://o53byxsxakiu"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Bat.gd" id="1_vb43c"]
 [ext_resource type="Texture2D" uid="uid://uy4b6n4711lq" path="res://Assets/Enemies/BatSpritesheet.png" id="2_0kyki"]
@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://fygpokdod3lj" path="res://Scenes/Items/experience_blood.tscn" id="5_vil8o"]
 [ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="6_5ulff"]
 [ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="7_n0fya"]
+[ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="9_1vkwh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jy4d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynprp"]
 resource_local_to_scene = true
 shader = ExtResource("7_n0fya")
 shader_parameter/lerp_percent = null
@@ -75,12 +76,13 @@ spawn_amount = 1
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_5ulff")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_7jy4d")
+hit_flash_material = SubResource("ShaderMaterial_ynprp")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_s5a48")]
 health_component = NodePath("../HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("9_1vkwh")
 texture = ExtResource("2_0kyki")
 hframes = 18
 frame = 1
