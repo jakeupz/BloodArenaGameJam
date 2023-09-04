@@ -3,6 +3,7 @@ extends Node
 @export var health_component: Node
 @export var sprite: Sprite2D
 @export var hit_flash_material = ShaderMaterial
+@export var light_fade_material = CanvasItemMaterial
 
 var hit_flash_tween: Tween
 
@@ -21,3 +22,8 @@ func on_health_changed():
 	hit_flash_tween = create_tween()
 	hit_flash_tween.tween_property(sprite.material, "shader_parameter/lerp_percent", 0.0, .25)\
 	.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	
+	hit_flash_tween.tween_callback(change_light_fade)
+		
+func change_light_fade():
+	sprite.material = light_fade_material
