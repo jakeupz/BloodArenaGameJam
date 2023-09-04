@@ -2195,7 +2195,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_bsow5")
 0:0/1 = 1
 0:0/1/modulate = Color(0.482353, 0.12549, 0.0901961, 1)
-0:0/1/physics_layer_0/linear_velocity = Vector2(-0.84, 0)
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/1/physics_layer_0/angular_velocity = 0.0
 0:0/1/navigation_layer_0/polygon = SubResource("NavigationPolygon_d1gld")
 

@@ -4,3 +4,6 @@
 
 [node name="VelocityComponent" type="Node"]
 script = ExtResource("1_o1n8s")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

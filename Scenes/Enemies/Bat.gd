@@ -43,6 +43,7 @@ func _on_area_entered(area):
 		# If the area that collided is Player/ChainAttackAnchor/ChainAttack
 		if area.name == "ChainAttack":
 			$HealthComponent.damage(area.attack_damage)
+			velocity_component.knockback()
 			#$HealthLabel.text = $HealthComponent.current_health
 			play_hurt_sfx()
 			#end if
