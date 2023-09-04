@@ -15,11 +15,25 @@ func _ready():
 	navigation_agent.target_desired_distance = 4
 	recalc_path()
 	
+	# Play looping walk animation
+	$Sprite2D/AnimationPlayer.play("walk")
+	
+	# Pick a random part of the walk animation
+	# so not all enemies walk in sync
+	$Sprite2D/AnimationPlayer.seek(randf_range(0.0, 1))
+	
+	#end ready()
+	
 	
 func _process(_delta):
 	$HealthLabel.text = str($HealthComponent.current_health)
 	# Keep the health label upright
 	$HealthLabel.rotation = -rotation	
+	
+	# Set walking animation speed based on velocity
+	$Sprite2D/AnimationPlayer.speed_scale = velocity.length() / 100
+	
+	#end process
 	
 func _physics_process(_delta):
 	if navigation_agent.is_navigation_finished():

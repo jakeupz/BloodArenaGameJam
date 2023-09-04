@@ -1,18 +1,76 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcq2q4p4eqyra"]
+[gd_scene load_steps=17 format=3 uid="uid://dcq2q4p4eqyra"]
 
 [ext_resource type="Script" path="res://Scenes/Main/test.gd" id="1_00wq2"]
 [ext_resource type="Texture2D" uid="uid://b30qwgl4dpaki" path="res://icon.svg" id="1_tlbip"]
 [ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_q1ktq"]
 [ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="3_6265d"]
 [ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="4_ugfsi"]
+[ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="5_0pk5e"]
+[ext_resource type="Texture2D" uid="uid://bubeaobbxvirw" path="res://Assets/Enemies/VampireSpritesheet.png" id="6_41wuq"]
+[ext_resource type="Script" path="res://Scenes/Main/BigBoiRotator.gd" id="7_gmsxl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2w1n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d70y7"]
 resource_local_to_scene = true
 shader = ExtResource("4_ugfsi")
 shader_parameter/lerp_percent = null
 
+[sub_resource type="Animation" id="Animation_rjufj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_38mmc"]
+resource_name = "walk"
+loop_mode = 1
+step = 0.0417
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0417, 0.0834, 0.1251, 0.1668, 0.2085, 0.2502, 0.2919, 0.3336, 0.3753, 0.417, 0.4587, 0.5004, 0.5421, 0.5838, 0.6255, 0.6672, 0.7089, 0.7506, 0.7923, 0.834, 0.8757, 0.9174, 0.9591, 1.0008),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 23]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2502, 0.7506),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}, {
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l2cm7"]
+_data = {
+"RESET": SubResource("Animation_rjufj"),
+"walk": SubResource("Animation_38mmc")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_041t3"]
-radius = 60.1664
+radius = 40.0154
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ip8d5"]
 radius = 457.262
@@ -21,7 +79,7 @@ radius = 457.262
 radius = 1453.43
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0q6ai"]
-radius = 60.0925
+radius = 46.7195
 
 [node name="test" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent")]
 scale = Vector2(0.3, 0.3)
@@ -37,14 +95,30 @@ max_health = 20.0
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_6265d")]
 health_component = NodePath("../HealthComponent")
-sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_j2w1n")
+sprite = NodePath("../Sprite2D2")
+hit_flash_material = SubResource("ShaderMaterial_d70y7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("5_0pk5e")
+rotation = -1.5708
+scale = Vector2(5, 5)
+texture = ExtResource("6_41wuq")
+offset = Vector2(0, -2)
+hframes = 24
+script = ExtResource("7_gmsxl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_l2cm7")
+}
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 0.552941, 0.988235, 1)
 texture = ExtResource("1_tlbip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_041t3")
 
 [node name="Navigation" type="Node2D" parent="."]
@@ -99,6 +173,7 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_0q6ai")
 
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
