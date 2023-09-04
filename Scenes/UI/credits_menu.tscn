@@ -42,9 +42,10 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="PauseLabel" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CreditsTitleLabel" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
 text = "Credits"
 horizontal_alignment = 1
 
@@ -52,78 +53,68 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "OpenGameArt.org"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(440, 0)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+[node name="FullCreditsRTLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
 layout_mode = 2
-text = "80 CC0 RPG SFX by rubberduck"
+focus_mode = 2
+bbcode_enabled = true
+text = "[font_size=32][center][url=https://opengameart.org/]OpenGameArt[/url][/center]
+[font_size=24]3D Models
+[font_size=16][url=https://opengameart.org/content/80-cc0-rpg-sfx]Mudeater (animated) by CDmir[/url]
+[indent]converted model and animations to pixel sprites for the player character[/indent]
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
-layout_mode = 2
-text = "Mudeater Animated by CDmir"
+[font_size=24]2D Art
+[font_size=16][url=https://opengameart.org/content/sci-fi-facility-asset-pack]Sci-Fi Facility Asset Pack by HaywardMorihara[/url]
+[indent]used sprites blood and giblet sprites from Doodads_spritesheet.png and giblet_variations.png[/indent]
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
-layout_mode = 2
-text = "Sprites for Top Down RPG by Quaade"
+[font_size=16][url=https://opengameart.org/content/vial]Vial by Jordan Irwin (AntumDeluge)[/url]
+[indent]added blood to vial.png and used it for our blood collection sprite[/indent]
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
-layout_mode = 2
-text = "Sci-Fi Facility Asset Pack by HaywardMorihara"
+[font_size=24]Audio
+[font_size=16][url=https://opengameart.org/content/80-cc0-rpg-sfx]80 CC0 RPG SFX by rubberduck[/url]
+[indent]used chain1.ogg and chain2.ogg for chain swinging sound effects[/indent]
 
-[node name="Label5" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
-layout_mode = 2
-text = "Vial by AntumDeluge"
+[font_size=16][url=https://opengameart.org/content/lava-splash]Lava splash posted by qubodup created by Michel Baradari[/url]
+[indent]used for blood vial pickup sound effect[/indent]
 
-[node name="Label6" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
-layout_mode = 2
-text = "Lava splash by Michel Baradari"
+[font_size=16][url=https://opengameart.org/content/male-gruntyelling-sounds]Male Grunt/Yelling sounds by HaelDB[/url]
+[indent]used for player damage sound effects[/indent]
 
-[node name="Label7" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
-layout_mode = 2
-text = "Zombie / Skeleton / Monster Voice Effects by ArcadeParty"
+[font_size=16][url=https://opengameart.org/content/zombie-skeleton-monster-voice-effects]Zombie / Skeleton / Monster Voice Effects by ArcadeParty[/url]
+[indent]used for vampire damage and death sound effects[/indent]
 
-[node name="Label8" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
-layout_mode = 2
-text = "Male Grunt/Yelling sounds by HaelDB"
+[font_size=32][center][url=https://freesound.org/]Freesound[/url][/center]
+[font_size=16][url=https://freesound.org/people/Coral_Island_Studios/sounds/459449/]01 Footsteps Sand.mp3 by Coral_Island_Studios[/url]
+[indent]used for the footstep sound effects of the player and vampires[/indent]
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "
-Freesounds.org
+[font_size=32][center][url=https://sketchfab.com/]Sketchfab[/url][/center]
+[font_size=16][url=https://sketchfab.com/3d-models/bat-28af38de4d2c401d809148c7f63a73f9]Bat by matisosanimation[/url]
+[indent]converted model and animations to pixel sprites for the bat enemy[/indent]
+
+[font_size=32][center][url=https://www.deviantart.com/]DeviantArt[/url][/center]
+[font_size=16][url=https://www.deviantart.com/tdeleeuw/art/Top-Down-Desert-Foliage-pixel-art-467750460]Top Down Desert Foliage pixel art by TdeLeeuw[/url]
+[indent]used to decorate the arena[/indent]
+
+[font_size=32][center][url=https://itch.io/]itch.io[/url][/center]
+[font_size=16][url=https://al-core.itch.io/fantasy-dungeon-tileset]Fantasy Dungeon Tileset by AL_Core[/url]
+[indent]used for the arena walls[/indent]
+
+[font_size=24]Programming & Game Design
+[font_size=16][url=https://scruboverlorder.itch.io/]ScrubOverlorder[/url]
+DuhBaconStrip
+[url=https://bobohotrod.itch.io/]bobohotrod[/url]
+
+[font_size=24]Additional 2D Art
+[font_size=16][url=https://scruboverlorder.itch.io/]ScrubOverlorder[/url]
+
 "
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2"]
-layout_mode = 2
-text = "01 Footsteps Sand.mp3 by Coral_Island_Studios"
-
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "
-Deviantart.com"
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer3"]
-layout_mode = 2
-text = "Top Down Desert Foliage pixel art By TdeLeeuw"
+fit_content = true
+selection_enabled = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 80.0
@@ -134,3 +125,5 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "Back"
+
+[connection signal="meta_clicked" from="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer/FullCreditsRTLabel" to="." method="_on_rich_text_label_meta_clicked"]
