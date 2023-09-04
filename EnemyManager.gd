@@ -52,7 +52,6 @@ func on_timer_timeout():
 			enemy = bat_enemy_scene.instantiate()
 		2:
 			enemy = vampire_enemy_scene.instantiate()
-			
 	
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer") 
 	entities_layer.add_child(enemy)

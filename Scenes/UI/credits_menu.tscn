@@ -48,22 +48,85 @@ size_flags_horizontal = 4
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "OpenGameArt.org"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "80 CC0 RPG SFX by rubberduck"
+
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Mudeater Animated by CDmir"
+
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Sprites for Top Down RPG by Quaade"
+
+[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Sci-Fi Facility Asset Pack by HaywardMorihara"
+
+[node name="Label5" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Vial by AntumDeluge"
+
+[node name="Label6" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Lava splash by Michel Baradari"
+
+[node name="Label7" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Zombie / Skeleton / Monster Voice Effects by ArcadeParty"
+
+[node name="Label8" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Male Grunt/Yelling sounds by HaelDB"
+
+[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "
+Freesounds.org
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2"]
 layout_mode = 2
-text = "Credits #1"
+text = "01 Footsteps Sand.mp3 by Coral_Island_Studios"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
 layout_mode = 2
-text = "Credits #2"
+text = "
+Deviantart.com"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer3"]
+layout_mode = 2
+text = "Top Down Desert Foliage pixel art By TdeLeeuw"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 100.0
+offset_right = 80.0
 offset_bottom = 60.0
 size_flags_horizontal = 3
 

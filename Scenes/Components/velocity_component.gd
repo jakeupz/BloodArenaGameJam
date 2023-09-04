@@ -2,6 +2,7 @@ extends Node
 
 @export var max_speed: int = 40
 @export var acceleration: float = 5
+@onready var timer = $Timer
 
 var velocity = Vector2.ZERO
 var angle_to_player = Vector2.ZERO
@@ -10,6 +11,7 @@ var player
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	timer.timeout.connect(knockback)
 
 # This will allow the character to check for the player position in a straight line
 func accelerate_to_player():
@@ -28,7 +30,12 @@ func accelerate_in_direction(direction: Vector2):
 	var desired_velocity = direction * max_speed
 	# acceleration = Smoothing process, delta = consistent. 1 - exp allows to eventually reach instead of stalling from a distance
 	velocity = velocity.lerp(desired_velocity, 1 - exp(-acceleration * get_process_delta_time()))
-
+	
+func knockback():
+	if player == null || !timer.is_stopped():
+		return
+	$Timer.start()
+	velocity = Vector2.ZERO
 
 # If you wanna slow down, do this
 func decelerate():

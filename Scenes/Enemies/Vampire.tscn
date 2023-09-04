@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cgvppps0pkhxt"]
+[gd_scene load_steps=20 format=3 uid="uid://cgvppps0pkhxt"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Vampire_Enemy.gd" id="1_eau7t"]
 [ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_co632"]
@@ -13,8 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://bbcgucbi2vr16" path="res://Scenes/Components/random_stream_player_2d_component.tscn" id="9_qpa2d"]
 [ext_resource type="AudioStream" uid="uid://dgv11txfjenbs" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage2.wav" id="10_eloa1"]
 [ext_resource type="AudioStream" uid="uid://cwsoe5kqel6po" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage3.wav" id="11_jvqwm"]
+[ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="13_v6wc6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ginim"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cfmf"]
 resource_local_to_scene = true
 shader = ExtResource("7_acj3a")
 shader_parameter/lerp_percent = null
@@ -100,7 +101,7 @@ spawn_amount = 1
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_qx5bu")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_ginim")
+hit_flash_material = SubResource("ShaderMaterial_0cfmf")
 
 [node name="VampireDamageRandomPlayer2DComponent" parent="." instance=ExtResource("9_qpa2d")]
 streams = Array[AudioStream]([ExtResource("9_0look"), ExtResource("10_eloa1"), ExtResource("11_jvqwm")])
@@ -111,7 +112,8 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_357t5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]
+material = ExtResource("13_v6wc6")
 rotation = -1.5708
 texture = ExtResource("7_orebm")
 offset = Vector2(0, -2)

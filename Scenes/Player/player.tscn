@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_h613c"]
 [ext_resource type="Texture2D" uid="uid://bx1kh8ckmiape" path="res://Assets/Player/PlayerSpritesheet.png" id="2_y6rxi"]
 [ext_resource type="PackedScene" uid="uid://wud6ff8hcvhk" path="res://Scenes/Components/velocity_component.tscn" id="3_71wy5"]
-[ext_resource type="Texture2D" uid="uid://bcb2vwmnxu17x" path="res://Assets/Player/Light.png" id="3_ajb3v"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerLegsSprite.gd" id="3_bbyao"]
 [ext_resource type="PackedScene" uid="uid://u1m57c2tfe30" path="res://Scenes/Components/death_component.tscn" id="4_ndsnw"]
 [ext_resource type="Texture2D" uid="uid://dsbjo4n82s2mn" path="res://Assets/Player/Attacks/Chain Spritesheet.png" id="4_r46l7"]
@@ -21,15 +20,16 @@
 [ext_resource type="AudioStream" uid="uid://ch653sxlh8bwc" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt3.wav" id="11_2687e"]
 [ext_resource type="AudioStream" uid="uid://cggc6fna7uar2" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt4.wav" id="12_lcn3n"]
 [ext_resource type="AudioStream" uid="uid://cv8056x5n2sk0" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt5.wav" id="13_ugvs8"]
+[ext_resource type="Texture2D" uid="uid://cr1l4qxhnhd0n" path="res://Assets/Player/LightCircle.png" id="22_78oax"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2ufk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjjxu"]
 resource_local_to_scene = true
 shader = ExtResource("6_ktb3f")
 shader_parameter/lerp_percent = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybqe4"]
-radius = 9.0
-height = 26.0
+radius = 15.0
+height = 40.6
 
 [sub_resource type="Animation" id="Animation_wxupx"]
 length = 0.05
@@ -547,7 +547,7 @@ acceleration = 25.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_y2tvw")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../PlayerSprite")
-hit_flash_material = SubResource("ShaderMaterial_h2ufk")
+hit_flash_material = SubResource("ShaderMaterial_rjjxu")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ndsnw")]
 health_component = NodePath("../HealthComponent")
@@ -585,7 +585,7 @@ method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_ch6or")
 }
-blend_times = [&"unused_idle", &"unused_idle", 0.25, &"unused_idle", &"unused_run", 0.25]
+blend_times = [&"unused_idle", &"unused_run", 0.25, &"unused_idle", &"unused_idle", 0.25]
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
@@ -594,7 +594,7 @@ texture = ExtResource("2_y6rxi")
 offset = Vector2(0, 2)
 hframes = 30
 vframes = 3
-frame = 16
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 libraries = {
@@ -607,11 +607,9 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-position = Vector2(51, 0)
-scale = Vector2(0.5, 0.5)
-shadow_enabled = true
-texture = ExtResource("3_ajb3v")
+blend_mode = 2
+texture = ExtResource("22_78oax")
+texture_scale = 3.0
 
 [node name="ChainAttackAnchor" type="Node2D" parent="."]
 position = Vector2(10, 10)
