@@ -69,6 +69,9 @@ text = "[font_size=32][center][url=https://opengameart.org/]OpenGameArt[/url][/c
 [indent]converted model and animations to pixel sprites for the player character[/indent]
 
 [font_size=24]2D Art
+[font_size=16][url=https://opengameart.org/content/admurins-miscellaneous-items]Admurin's Miscellaneous Items by Admurin[/url]
+[indent]used human skull sprite[/indent]
+
 [font_size=16][url=https://opengameart.org/content/sci-fi-facility-asset-pack]Sci-Fi Facility Asset Pack by HaywardMorihara[/url]
 [indent]used sprites blood and giblet sprites from Doodads_spritesheet.png and giblet_variations.png[/indent]
 
@@ -103,6 +106,10 @@ text = "[font_size=32][center][url=https://opengameart.org/]OpenGameArt[/url][/c
 [font_size=32][center][url=https://itch.io/]itch.io[/url][/center]
 [font_size=16][url=https://al-core.itch.io/fantasy-dungeon-tileset]Fantasy Dungeon Tileset by AL_Core[/url]
 [indent]used for the arena walls[/indent]
+
+[font_size=32][center][url=https://www.mixamo.com/]Mixamo[/url][/center]
+[font_size=16]Animations & 3D Model
+[indent]used for walk cycles, attack animations, and the vampire 3D model[/indent]
 
 [font_size=24]Programming & Game Design
 [font_size=16][url=https://scruboverlorder.itch.io/]ScrubOverlorder[/url]
