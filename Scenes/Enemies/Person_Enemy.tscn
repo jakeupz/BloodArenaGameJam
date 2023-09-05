@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="6_ihlh0"]
 [ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="7_yg7ps"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1imf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o78j8"]
 resource_local_to_scene = true
 shader = ExtResource("7_yg7ps")
 shader_parameter/lerp_percent = null
@@ -43,7 +43,7 @@ spawn_amount = 1
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_ihlh0")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_k1imf")
+hit_flash_material = SubResource("ShaderMaterial_o78j8")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ostv2")]
 health_component = NodePath("../HealthComponent")

@@ -75,8 +75,6 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	move_and_slide()
 
 
-
-
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("player_attacks"):
 		# If the area that collided is Player/ChainAttackAnchor/ChainAttack
