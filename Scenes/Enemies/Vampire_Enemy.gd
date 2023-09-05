@@ -6,7 +6,6 @@ extends CharacterBody2D
 @onready var velocity_component = $VelocityComponent
 
 var vampire_death_sound = preload("res://Scenes/Enemies/VampireDeathSFX.tscn")
-var player = preload ("res://Scenes/Player/player.tscn")
 var sand_steps_player = preload("res://Scenes/Player/SandStepsPlayer.tscn")
 
 func _ready():

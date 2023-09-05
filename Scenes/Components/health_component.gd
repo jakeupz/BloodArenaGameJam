@@ -14,7 +14,6 @@ func _ready():
 
 func damage(damage_amount: float):
 	current_health = max(current_health - damage_amount, 0)
-	# A "hit taken" signal would happen but nothings implemented right now
 	health_changed.emit()
 	#Calls at the end of the current frame
 
