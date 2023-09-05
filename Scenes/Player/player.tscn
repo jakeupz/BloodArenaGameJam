@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bpv6h0idmbwq8"]
+[gd_scene load_steps=44 format=3 uid="uid://bpv6h0idmbwq8"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_1ssqm"]
 [ext_resource type="Texture2D" uid="uid://dyw8rmwwbj67b" path="res://Assets/Player/PlayerLegsSpritesheet.png" id="2_8au3m"]
@@ -20,9 +20,10 @@
 [ext_resource type="AudioStream" uid="uid://ch653sxlh8bwc" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt3.wav" id="11_2687e"]
 [ext_resource type="AudioStream" uid="uid://cggc6fna7uar2" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt4.wav" id="12_lcn3n"]
 [ext_resource type="AudioStream" uid="uid://cv8056x5n2sk0" path="res://Resources/Audio/Sound Effects/PlayerDamage/3grunt5.wav" id="13_ugvs8"]
+[ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="16_lusym"]
 [ext_resource type="Texture2D" uid="uid://di7ic60mluinl" path="res://Assets/Player/lightCircle2.png" id="17_18y5d"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8resx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0osiu"]
 resource_local_to_scene = true
 shader = ExtResource("6_ktb3f")
 shader_parameter/lerp_percent = null
@@ -535,6 +536,7 @@ collision_mask = 21
 script = ExtResource("1_1ssqm")
 
 [node name="SpookyBackgroundMusic" parent="." instance=ExtResource("10_rqqr0")]
+volume_db = -15.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_h613c")]
 max_health = 3.0
@@ -547,7 +549,7 @@ acceleration = 25.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_y2tvw")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../PlayerSprite")
-hit_flash_material = SubResource("ShaderMaterial_8resx")
+hit_flash_material = SubResource("ShaderMaterial_0osiu")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ndsnw")]
 health_component = NodePath("../HealthComponent")
@@ -575,6 +577,7 @@ update_rotation = false
 
 [node name="PlayerLegsSprite" type="Sprite2D" parent="."]
 top_level = true
+material = ExtResource("16_lusym")
 texture = ExtResource("2_8au3m")
 hframes = 23
 vframes = 2
@@ -585,16 +588,17 @@ method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_ch6or")
 }
-blend_times = [&"unused_idle", &"unused_run", 0.25, &"unused_idle", &"unused_idle", 0.25]
+blend_times = [&"unused_idle", &"unused_idle", 0.25, &"unused_idle", &"unused_run", 0.25]
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
+material = ExtResource("16_lusym")
 rotation = 4.71239
 texture = ExtResource("2_y6rxi")
 offset = Vector2(0, 2)
 hframes = 30
 vframes = 3
-frame = 11
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 libraries = {

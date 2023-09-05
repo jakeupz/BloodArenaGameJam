@@ -8,6 +8,14 @@ func _ready():
 	%CreditsButton.pressed.connect(on_credits_pressed)
 	%QuitButton.pressed.connect(on_quit_pressed)
 	
+	# Set the default values of music/sfx volume to 50% and 80% 
+	var music_bus_index = AudioServer.get_bus_index("Music")
+	var sfx_bus_index = AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(music_bus_index, linear_to_db(0.3))
+	AudioServer.set_bus_volume_db(sfx_bus_index, linear_to_db(0.8))
+	#end ready
+
+
 func on_play_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Main/main.tscn")
 
