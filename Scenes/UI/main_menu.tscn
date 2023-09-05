@@ -60,7 +60,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VampireFace" type="Sprite2D" parent="."]
-position = Vector2(328, 206)
+position = Vector2(320, 206)
 scale = Vector2(4.95833, 4.95833)
 texture = ExtResource("2_3fvav")
 

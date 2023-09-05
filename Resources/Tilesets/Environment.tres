@@ -8,10 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://edew2radhchf" path="res://Assets/Environment/bone_pile.png" id="5_hjvhk"]
 [ext_resource type="Texture2D" uid="uid://b6y7piml0cjwm" path="res://Assets/Environment/corpses.png" id="5_hna40"]
 [ext_resource type="Texture2D" uid="uid://dlbliwey0yqfw" path="res://Assets/Environment/desert_plants.png" id="6_r1wyp"]
-[ext_resource type="Texture2D" uid="uid://bwbcmsm1awlgf" path="res://Assets/Environment/skull.png" id="6_yi3oi"]
 [ext_resource type="Texture2D" uid="uid://chnecvh6v5ddy" path="res://Assets/Environment/Sand Terrain.png" id="7_05bkd"]
 [ext_resource type="Texture2D" uid="uid://d3b0vxtncpfhy" path="res://Assets/Environment/sand_stone.png" id="9_erlyu"]
 [ext_resource type="Texture2D" uid="uid://bay5tmja3v5ip" path="res://Assets/Environment/Blood Fountain.png" id="11_d43oj"]
+[ext_resource type="Texture2D" uid="uid://dml44e5lp501w" path="res://Assets/Environment/whiteskull.png" id="12_5ge0e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wkbhd"]
 
@@ -2180,7 +2180,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mvyt"]
-texture = ExtResource("6_yi3oi")
+texture = ExtResource("12_5ge0e")
 texture_region_size = Vector2i(32, 32)
 0:0/next_alternative_id = 2
 0:0/0 = 0
