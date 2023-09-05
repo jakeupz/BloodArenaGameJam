@@ -20,7 +20,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnnb2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2foy"]
 resource_local_to_scene = true
 shader = SubResource("Shader_gveek")
 shader_parameter/lerp_percent = null
@@ -84,10 +84,10 @@ _data = {
 radius = 40.0154
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ip8d5"]
-radius = 457.262
+radius = 1600.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cgvq"]
-radius = 1453.43
+radius = 6000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0q6ai"]
 radius = 46.7195
@@ -107,7 +107,7 @@ max_health = 20.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_6265d")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_qnnb2")
+hit_flash_material = SubResource("ShaderMaterial_c2foy")
 light_fade_material = ExtResource("5_0pk5e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -139,14 +139,12 @@ shape = SubResource("CircleShape2D_041t3")
 avoidance_enabled = true
 avoidance_layers = 0
 avoidance_mask = 128
-debug_enabled = true
 
 [node name="RecalculateTimer" type="Timer" parent="Navigation"]
 wait_time = 0.073
 autostart = true
 
 [node name="Node2D" type="Node2D" parent="."]
-visible = false
 
 [node name="AgroRange" type="Area2D" parent="Node2D"]
 collision_layer = 0
