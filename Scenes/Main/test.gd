@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 50
+@export var speed = 150
 @export var navigation_agent: NavigationAgent2D 
 @onready var health_component = $HealthComponent
 
@@ -13,8 +13,8 @@ var sand_steps_player = preload("res://Scenes/Player/SandStepsPlayer.tscn")
 
 
 func _ready():
-	navigation_agent.path_desired_distance = 4
-	navigation_agent.target_desired_distance = 4
+	navigation_agent.path_desired_distance = 5
+	navigation_agent.target_desired_distance = 400
 	recalc_path()
 	
 	# Play looping walk animation
