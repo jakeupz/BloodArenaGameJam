@@ -19,7 +19,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbw4u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4lin"]
 resource_local_to_scene = true
 shader = SubResource("Shader_gveek")
 shader_parameter/lerp_percent = null
@@ -106,7 +106,7 @@ max_health = 20.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_6265d")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_rbw4u")
+hit_flash_material = SubResource("ShaderMaterial_c4lin")
 light_fade_material = ExtResource("5_0pk5e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]

@@ -21,6 +21,8 @@ initial_velocity_max = 60.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 damping_max = 20.0
+scale_min = 2.0
+scale_max = 2.0
 anim_offset_max = 1.0
 
 [sub_resource type="Animation" id="Animation_ka72r"]

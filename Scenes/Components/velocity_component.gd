@@ -6,16 +6,18 @@ extends Node
 
 var velocity = Vector2.ZERO
 var angle_to_player = Vector2.ZERO
+var knockback_speed = 3
 
 var player
+var owner_node2d
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	owner_node2d = owner as Node2D
 	timer.timeout.connect(knockback)
 
 # This will allow the character to check for the player position in a straight line
 func accelerate_to_player():
-	var owner_node2d = owner as Node2D
 	if owner_node2d == null:
 		return
 		
@@ -32,10 +34,11 @@ func accelerate_in_direction(direction: Vector2):
 	velocity = velocity.lerp(desired_velocity, 1 - exp(-acceleration * get_process_delta_time()))
 	
 func knockback():
-	if player == null || !timer.is_stopped():
+	if player == null:
 		return
-	$Timer.start()
-	velocity = Vector2.ZERO
+		
+	var direction = (owner_node2d.global_position - player.global_position).normalized()
+	velocity = direction * max_speed * knockback_speed
 
 # If you wanna slow down, do this
 func decelerate():

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 150
+@export var speed = 120
 @export var navigation_agent: NavigationAgent2D 
 @onready var health_component = $HealthComponent
 
