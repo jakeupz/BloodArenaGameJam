@@ -80,6 +80,7 @@ func _on_hurt_box_area_entered(area):
 		# If the area that collided is Player/ChainAttackAnchor/ChainAttack
 		if area.name == "ChainAttack":
 			$HealthComponent.damage(0)
+			$RandomStreamPlayer2DComponent.play_random()
 				#end if
 			#end if
 

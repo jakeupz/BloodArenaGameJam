@@ -23,14 +23,14 @@
 [ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="16_lusym"]
 [ext_resource type="Texture2D" uid="uid://di7ic60mluinl" path="res://Assets/Player/lightCircle2.png" id="17_18y5d"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_puamc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ju55p"]
 resource_local_to_scene = true
 shader = ExtResource("6_ktb3f")
 shader_parameter/lerp_percent = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ybqe4"]
-radius = 15.0
-height = 40.6
+radius = 8.0
+height = 28.0
 
 [sub_resource type="Animation" id="Animation_wxupx"]
 length = 0.05
@@ -549,7 +549,7 @@ acceleration = 25.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_y2tvw")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../PlayerSprite")
-hit_flash_material = SubResource("ShaderMaterial_puamc")
+hit_flash_material = SubResource("ShaderMaterial_ju55p")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ndsnw")]
 health_component = NodePath("../HealthComponent")
@@ -588,7 +588,7 @@ method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_ch6or")
 }
-blend_times = [&"unused_idle", &"unused_idle", 0.25, &"unused_idle", &"unused_run", 0.25]
+blend_times = [&"unused_idle", &"unused_run", 0.25, &"unused_idle", &"unused_idle", 0.25]
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 z_index = 5
@@ -598,7 +598,7 @@ texture = ExtResource("2_y6rxi")
 offset = Vector2(0, 2)
 hframes = 30
 vframes = 3
-frame = 4
+frame = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 libraries = {

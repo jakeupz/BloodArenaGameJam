@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcq2q4p4eqyra"]
+[gd_scene load_steps=19 format=3 uid="uid://dcq2q4p4eqyra"]
 
 [ext_resource type="Script" path="res://Scenes/Main/test.gd" id="1_00wq2"]
 [ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_q1ktq"]
 [ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="3_6265d"]
 [ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="5_0pk5e"]
 [ext_resource type="Texture2D" uid="uid://bubeaobbxvirw" path="res://Assets/Enemies/VampireSpritesheet.png" id="6_41wuq"]
+[ext_resource type="PackedScene" uid="uid://bbcgucbi2vr16" path="res://Scenes/Components/random_stream_player_2d_component.tscn" id="7_abdss"]
 [ext_resource type="Script" path="res://Scenes/Main/BigBoiRotator.gd" id="7_gmsxl"]
+[ext_resource type="AudioStream" uid="uid://dgv11txfjenbs" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage2.wav" id="9_66dm3"]
+[ext_resource type="AudioStream" uid="uid://cwsoe5kqel6po" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage3.wav" id="10_5mnp2"]
 
 [sub_resource type="Shader" id="Shader_gveek"]
 code = "shader_type canvas_item;
@@ -19,7 +22,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4lin"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfbnj"]
 resource_local_to_scene = true
 shader = SubResource("Shader_gveek")
 shader_parameter/lerp_percent = null
@@ -106,7 +109,7 @@ max_health = 20.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_6265d")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_c4lin")
+hit_flash_material = SubResource("ShaderMaterial_wfbnj")
 light_fade_material = ExtResource("5_0pk5e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]
@@ -180,6 +183,9 @@ collision_mask = 8
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_0q6ai")
+
+[node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("7_abdss")]
+streams = Array[AudioStream]([ExtResource("9_66dm3"), ExtResource("10_5mnp2")])
 
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
