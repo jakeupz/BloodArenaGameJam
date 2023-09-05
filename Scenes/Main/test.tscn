@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcq2q4p4eqyra"]
+[gd_scene load_steps=19 format=3 uid="uid://dcq2q4p4eqyra"]
 
 [ext_resource type="Script" path="res://Scenes/Main/test.gd" id="1_00wq2"]
 [ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_q1ktq"]
 [ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="3_6265d"]
 [ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="5_0pk5e"]
 [ext_resource type="Texture2D" uid="uid://bubeaobbxvirw" path="res://Assets/Enemies/VampireSpritesheet.png" id="6_41wuq"]
+[ext_resource type="PackedScene" uid="uid://bbcgucbi2vr16" path="res://Scenes/Components/random_stream_player_2d_component.tscn" id="7_abdss"]
 [ext_resource type="Script" path="res://Scenes/Main/BigBoiRotator.gd" id="7_gmsxl"]
+[ext_resource type="AudioStream" uid="uid://c8vn1vwkamm5b" path="res://Resources/Audio/Sound Effects/BigBoiLaugh/EvilLaugh1.ogg" id="8_mufmx"]
+[ext_resource type="AudioStream" uid="uid://vg5hhbk0lcwn" path="res://Resources/Audio/Sound Effects/BigBoiLaugh/EvilLaugh2.ogg" id="9_ajb00"]
 
 [sub_resource type="Shader" id="Shader_gveek"]
 code = "shader_type canvas_item;
@@ -19,7 +22,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rbw4u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nb2bf"]
 resource_local_to_scene = true
 shader = SubResource("Shader_gveek")
 shader_parameter/lerp_percent = null
@@ -106,7 +109,7 @@ max_health = 20.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_6265d")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_rbw4u")
+hit_flash_material = SubResource("ShaderMaterial_nb2bf")
 light_fade_material = ExtResource("5_0pk5e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]
@@ -158,6 +161,7 @@ shape = SubResource("CircleShape2D_5cgvq")
 debug_color = Color(0.905882, 0.211765, 0.556863, 0.419608)
 
 [node name="HealthLabel" type="Label" parent="."]
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.171
@@ -178,8 +182,14 @@ collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+visible = false
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_0q6ai")
+
+[node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("7_abdss")]
+streams = Array[AudioStream]([ExtResource("8_mufmx"), ExtResource("9_ajb00")])
+min_pitch = 0.6
+max_pitch = 0.8
 
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]

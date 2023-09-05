@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 150
+@export var speed = 120
 @export var navigation_agent: NavigationAgent2D 
 @onready var health_component = $HealthComponent
 
@@ -80,6 +80,9 @@ func _on_hurt_box_area_entered(area):
 		# If the area that collided is Player/ChainAttackAnchor/ChainAttack
 		if area.name == "ChainAttack":
 			$HealthComponent.damage(0)
+			
+			if $RandomStreamPlayer2DComponent.playing == false:
+				$RandomStreamPlayer2DComponent.play_random()
 				#end if
 			#end if
 

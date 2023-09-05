@@ -12,7 +12,7 @@
 [ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="7_n0fya"]
 [ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="9_1vkwh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_do6mp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qofuj"]
 resource_local_to_scene = true
 shader = ExtResource("7_n0fya")
 shader_parameter/lerp_percent = null
@@ -56,17 +56,17 @@ _data = {
 }
 
 [node name="Bat" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 4
-collision_mask = 2
+collision_layer = 32
+collision_mask = 34
 motion_mode = 1
 script = ExtResource("1_vb43c")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_8vvfr")]
-max_health = 2.0
-current_health = 2.0
+max_health = 3.0
+current_health = 3.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("2_cnmn2")]
-max_speed = 80
+max_speed = 135
 
 [node name="BloodDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_3lkyu")]
 blood_drop_scene = ExtResource("5_vil8o")
@@ -76,7 +76,7 @@ spawn_amount = 1
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_5ulff")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_do6mp")
+hit_flash_material = SubResource("ShaderMaterial_qofuj")
 light_fade_material = ExtResource("9_1vkwh")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_s5a48")]
@@ -114,6 +114,7 @@ attenuation = 20.0
 bus = &"SFX"
 
 [node name="HealthLabel" type="Label" parent="."]
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.171

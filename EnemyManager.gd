@@ -4,6 +4,7 @@ const SPAWN_RADIUS = 375
 
 @export var bat_enemy_scene: PackedScene
 @export var vampire_enemy_scene: PackedScene
+@export var lower_timer_reduction : float = 0.5
 
 @onready var spawnTimer = $SpawnTimer
 @onready var lower_timer = $LowerTimer
@@ -60,10 +61,10 @@ func on_spawnTimer_timeout():
 	enemy.global_position = get_spawn_position()
 
 func lower_spawnTimer():
-	if spawnTimer.wait_time <= .2:
+	if spawnTimer.wait_time <= 1:
 		return
 		
 	lower_timer.start()
 	
-	spawnTimer.wait_time -= .1
+	spawnTimer.wait_time -= lower_timer_reduction
 	print("spawnTimer: ", spawnTimer.wait_time)

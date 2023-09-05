@@ -8,6 +8,8 @@ signal experience_blood_collected(number: float)
 signal player_damaged()
 signal health_set_on_ui(number: int)
 
+var highscore_number = 0
+
 func emit_experience_blood_collected(number: float):
 	experience_blood_collected.emit(number)
 
@@ -16,5 +18,9 @@ func emit_player_damaged():
 	
 func emit_set_player_health(number: int):
 	health_set_on_ui.emit(number)
+
+func score_update(number: int):
+	if number > highscore_number:
+		highscore_number = number
 
 var currently_attacking : bool = false

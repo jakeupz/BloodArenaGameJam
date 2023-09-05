@@ -15,14 +15,14 @@
 [ext_resource type="AudioStream" uid="uid://cwsoe5kqel6po" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage3.wav" id="11_jvqwm"]
 [ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="13_v6wc6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4aod3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7k8l"]
 resource_local_to_scene = true
 shader = ExtResource("7_acj3a")
 shader_parameter/lerp_percent = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_357t5"]
-radius = 16.5
-height = 44.0
+radius = 12.0
+height = 38.8571
 
 [sub_resource type="Animation" id="Animation_rjufj"]
 length = 0.001
@@ -80,6 +80,7 @@ _data = {
 }
 
 [node name="VampireEnemy" type="CharacterBody2D" groups=["enemy"]]
+material = ExtResource("13_v6wc6")
 scale = Vector2(1.75, 1.75)
 collision_layer = 4
 collision_mask = 7
@@ -87,11 +88,11 @@ safe_margin = 1.0
 script = ExtResource("1_eau7t")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_co632")]
-max_health = 2.0
-current_health = 2.0
+max_health = 5.0
+current_health = 5.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_oefln")]
-max_speed = 60
+max_speed = 80
 
 [node name="BloodDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_n7a64")]
 blood_drop_scene = ExtResource("5_h75ro")
@@ -101,7 +102,7 @@ spawn_amount = 1
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_qx5bu")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_4aod3")
+hit_flash_material = SubResource("ShaderMaterial_t7k8l")
 light_fade_material = ExtResource("13_v6wc6")
 
 [node name="VampireDamageRandomPlayer2DComponent" parent="." instance=ExtResource("9_qpa2d")]
@@ -133,6 +134,7 @@ collision_mask = 8
 shape = SubResource("CapsuleShape2D_357t5")
 
 [node name="HealthLabel" type="Label" parent="."]
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.171
