@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cwsoe5kqel6po" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage3.wav" id="11_jvqwm"]
 [ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="13_v6wc6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n75xl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7k8l"]
 resource_local_to_scene = true
 shader = ExtResource("7_acj3a")
 shader_parameter/lerp_percent = null
@@ -102,7 +102,7 @@ spawn_amount = 1
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_qx5bu")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_n75xl")
+hit_flash_material = SubResource("ShaderMaterial_t7k8l")
 light_fade_material = ExtResource("13_v6wc6")
 
 [node name="VampireDamageRandomPlayer2DComponent" parent="." instance=ExtResource("9_qpa2d")]
@@ -115,6 +115,7 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("CapsuleShape2D_357t5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]
+material = ExtResource("13_v6wc6")
 rotation = -1.5708
 texture = ExtResource("7_orebm")
 offset = Vector2(0, -2)
