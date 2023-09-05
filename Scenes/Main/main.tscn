@@ -104,3 +104,6 @@ color = Color(0, 0, 0, 0.784314)
 [node name="BloodWriting" type="Sprite2D" parent="."]
 position = Vector2(1566, 803)
 texture = ExtResource("11_nwmxr")
+
+[node name="test2" parent="." instance=ExtResource("6_w7jxs")]
+position = Vector2(159, 351)

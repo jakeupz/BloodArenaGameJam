@@ -4,14 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://b30qwgl4dpaki" path="res://icon.svg" id="1_tlbip"]
 [ext_resource type="PackedScene" uid="uid://0f0v4nfld8qo" path="res://Scenes/Components/health_component.tscn" id="2_q1ktq"]
 [ext_resource type="PackedScene" uid="uid://ce801sgwsca1h" path="res://Scenes/Components/hit_flash_component.tscn" id="3_6265d"]
-[ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="4_ugfsi"]
 [ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="5_0pk5e"]
 [ext_resource type="Texture2D" uid="uid://bubeaobbxvirw" path="res://Assets/Enemies/VampireSpritesheet.png" id="6_41wuq"]
 [ext_resource type="Script" path="res://Scenes/Main/BigBoiRotator.gd" id="7_gmsxl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d70y7"]
+[sub_resource type="Shader" id="Shader_gveek"]
+code = "shader_type canvas_item;
+
+uniform float lerp_percent : hint_range(0.0, 1.0);
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	vec4 final_color = mix(texture_color, vec4(0.0, 0.0, 0.0, texture_color.a), lerp_percent);
+	COLOR = final_color;
+	// Place fragment code here.
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnnb2"]
 resource_local_to_scene = true
-shader = ExtResource("4_ugfsi")
+shader = SubResource("Shader_gveek")
 shader_parameter/lerp_percent = null
 
 [sub_resource type="Animation" id="Animation_rjufj"]
@@ -95,8 +106,9 @@ max_health = 20.0
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_6265d")]
 health_component = NodePath("../HealthComponent")
-sprite = NodePath("../Sprite2D2")
-hit_flash_material = SubResource("ShaderMaterial_d70y7")
+sprite = NodePath("../Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_qnnb2")
+light_fade_material = ExtResource("5_0pk5e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = ExtResource("5_0pk5e")

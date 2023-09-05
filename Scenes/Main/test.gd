@@ -9,6 +9,8 @@ var last_known_position = target_node
 var backup = 25
 var bruh
 
+var sand_steps_player = preload("res://Scenes/Player/SandStepsPlayer.tscn")
+
 
 func _ready():
 	navigation_agent.path_desired_distance = 4
@@ -79,10 +81,18 @@ func _on_hurt_box_area_entered(area):
 	if area.is_in_group("player_attacks"):
 		# If the area that collided is Player/ChainAttackAnchor/ChainAttack
 		if area.name == "ChainAttack":
-			$HealthComponent.damage(area.attack_damage)
+			$HealthComponent.damage(0)
 				#end if
 			#end if
 
 		# If bat is out of health, kill it / free memory
 		if $HealthComponent.current_health <= 0:
 			$HealthComponent.check_death()
+
+func play_footstep():
+	# Instantiate a SandStepsPlayer
+	var sand_steps_instance : = sand_steps_player.instantiate()
+	sand_steps_instance.pitch_scale = 0.7
+	sand_steps_instance.attenuation = 10
+	add_child.call_deferred(sand_steps_instance)
+	#end play_footstep

@@ -17,10 +17,12 @@ func set_defeat(number: float):
 #		$VictoryStreamPlayer.play()
 
 func on_restart_button_pressed():
+	Global.currently_attacking = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/Main/main.tscn")
 
 
 func on_quit_button_pressed():
+	Global.currently_attacking = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")

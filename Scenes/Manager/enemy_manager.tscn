@@ -7,6 +7,11 @@
 script = ExtResource("1_1qsuy")
 bat_enemy_scene = ExtResource("2_hqa2o")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="LowerTimer" type="Timer" parent="."]
+wait_time = 20.0
 one_shot = true
 autostart = true

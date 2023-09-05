@@ -5,14 +5,16 @@ const SPAWN_RADIUS = 375
 @export var bat_enemy_scene: PackedScene
 @export var vampire_enemy_scene: PackedScene
 
-@onready var timer = $Timer
+@onready var spawnTimer = $SpawnTimer
+@onready var lower_timer = $LowerTimer
 
 var base_spawn_time = 0
 var enemy
 
 func _ready():
-	base_spawn_time = timer.wait_time
-	timer.timeout.connect(on_timer_timeout)
+	base_spawn_time = spawnTimer.wait_time
+	spawnTimer.timeout.connect(on_spawnTimer_timeout)
+	lower_timer.timeout.connect(lower_spawnTimer)
 	
 func get_spawn_position():
 	var player = get_tree().get_first_node_in_group("player")
@@ -39,8 +41,8 @@ func get_spawn_position():
 			
 	return spawn_position
 
-func on_timer_timeout():
-	timer.start()
+func on_spawnTimer_timeout():
+	spawnTimer.start()
 	
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
@@ -56,3 +58,12 @@ func on_timer_timeout():
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer") 
 	entities_layer.add_child(enemy)
 	enemy.global_position = get_spawn_position()
+
+func lower_spawnTimer():
+	if spawnTimer.wait_time <= .2:
+		return
+		
+	lower_timer.start()
+	
+	spawnTimer.wait_time -= .1
+	print("spawnTimer: ", spawnTimer.wait_time)
