@@ -12,7 +12,7 @@
 [ext_resource type="Shader" path="res://Scenes/Components/hit_flash_component.gdshader" id="7_n0fya"]
 [ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="9_1vkwh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwrms"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vhoab"]
 resource_local_to_scene = true
 shader = ExtResource("7_n0fya")
 shader_parameter/lerp_percent = null
@@ -76,7 +76,7 @@ spawn_amount = 1
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_5ulff")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_kwrms")
+hit_flash_material = SubResource("ShaderMaterial_vhoab")
 light_fade_material = ExtResource("9_1vkwh")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_s5a48")]
@@ -97,7 +97,6 @@ libraries = {
 rotation = 1.5708
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(0, 9, -22, -3, -6, -5, -6, -9, 6, -9, 6, -5, 22, -3)
-disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

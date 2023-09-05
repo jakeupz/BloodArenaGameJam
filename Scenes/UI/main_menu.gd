@@ -1,6 +1,10 @@
 extends CanvasLayer
 
+@onready var score_label = $ScoreLabel
+
 var options_scene = preload("res://Scenes/UI/options_menu.tscn")
+
+var highscore = Global.highscore_number
 
 func _ready():
 	%PlayButton.pressed.connect(on_play_pressed)
@@ -13,6 +17,8 @@ func _ready():
 	var sfx_bus_index = AudioServer.get_bus_index("SFX")
 	AudioServer.set_bus_volume_db(music_bus_index, linear_to_db(0.3))
 	AudioServer.set_bus_volume_db(sfx_bus_index, linear_to_db(0.8))
+	
+	on_score_update(highscore)
 	#end ready
 
 
@@ -33,3 +39,6 @@ func on_quit_pressed():
 
 func on_options_closed(options_instance: Node):
 	options_instance.queue_free()
+	
+func on_score_update(number: int):
+	%ScoreLabel.text = "Highscore: " + str(number)
