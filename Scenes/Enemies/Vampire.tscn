@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cwsoe5kqel6po" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage3.wav" id="11_jvqwm"]
 [ext_resource type="Material" uid="uid://cl00kxo3seb35" path="res://Assets/CanvasItemMaterials/Light.tres" id="13_v6wc6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4aod3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0g5l3"]
 resource_local_to_scene = true
 shader = ExtResource("7_acj3a")
 shader_parameter/lerp_percent = null
@@ -87,8 +87,7 @@ safe_margin = 1.0
 script = ExtResource("1_eau7t")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_co632")]
-max_health = 2.0
-current_health = 2.0
+current_health = 10.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_oefln")]
 max_speed = 60
@@ -101,7 +100,7 @@ spawn_amount = 1
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_qx5bu")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_4aod3")
+hit_flash_material = SubResource("ShaderMaterial_0g5l3")
 light_fade_material = ExtResource("13_v6wc6")
 
 [node name="VampireDamageRandomPlayer2DComponent" parent="." instance=ExtResource("9_qpa2d")]
