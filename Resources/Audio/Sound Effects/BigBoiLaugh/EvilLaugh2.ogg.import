@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://vg5hhbk0lcwn"
+path="res://.godot/imported/EvilLaugh2.ogg-d9c07bb302ebfcf5cf1460b9741f9156.oggvorbisstr"
+
+[deps]
+
+source_file="res://Resources/Audio/Sound Effects/BigBoiLaugh/EvilLaugh2.ogg"
+dest_files=["res://.godot/imported/EvilLaugh2.ogg-d9c07bb302ebfcf5cf1460b9741f9156.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

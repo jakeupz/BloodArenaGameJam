@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bubeaobbxvirw" path="res://Assets/Enemies/VampireSpritesheet.png" id="6_41wuq"]
 [ext_resource type="PackedScene" uid="uid://bbcgucbi2vr16" path="res://Scenes/Components/random_stream_player_2d_component.tscn" id="7_abdss"]
 [ext_resource type="Script" path="res://Scenes/Main/BigBoiRotator.gd" id="7_gmsxl"]
-[ext_resource type="AudioStream" uid="uid://dgv11txfjenbs" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage2.wav" id="9_66dm3"]
-[ext_resource type="AudioStream" uid="uid://cwsoe5kqel6po" path="res://Resources/Audio/Sound Effects/VampireDamage/VampireDamage3.wav" id="10_5mnp2"]
+[ext_resource type="AudioStream" uid="uid://c8vn1vwkamm5b" path="res://Resources/Audio/Sound Effects/BigBoiLaugh/EvilLaugh1.ogg" id="8_mufmx"]
+[ext_resource type="AudioStream" uid="uid://vg5hhbk0lcwn" path="res://Resources/Audio/Sound Effects/BigBoiLaugh/EvilLaugh2.ogg" id="9_ajb00"]
 
 [sub_resource type="Shader" id="Shader_gveek"]
 code = "shader_type canvas_item;
@@ -22,7 +22,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4o6y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nb2bf"]
 resource_local_to_scene = true
 shader = SubResource("Shader_gveek")
 shader_parameter/lerp_percent = null
@@ -109,7 +109,7 @@ max_health = 20.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_6265d")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_q4o6y")
+hit_flash_material = SubResource("ShaderMaterial_nb2bf")
 light_fade_material = ExtResource("5_0pk5e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]
@@ -187,7 +187,9 @@ scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_0q6ai")
 
 [node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("7_abdss")]
-streams = Array[AudioStream]([ExtResource("9_66dm3"), ExtResource("10_5mnp2")])
+streams = Array[AudioStream]([ExtResource("8_mufmx"), ExtResource("9_ajb00")])
+min_pitch = 0.6
+max_pitch = 0.8
 
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
